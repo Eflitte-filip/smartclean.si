@@ -548,6 +548,14 @@ html{scroll-padding-top:92px;}
 .panoge-grid > :last-child:nth-child(odd){grid-column:1 / -1;}
 @media(max-width:860px){.panoge-grid > :last-child:nth-child(odd){grid-column:auto;}}
 
+/* ── povezava do portala ─────────────────────────────────────────── */
+.nav-login{display:inline-flex;align-items:center;gap:7px;font-size:.9rem;
+  font-weight:500;color:var(--mid);white-space:nowrap;transition:color .2s;}
+.nav-login:hover{color:var(--green-t);}
+.nav-login svg{width:15px;height:15px;flex-shrink:0;}
+.mob-login{border-top:1px solid var(--line)!important;color:var(--green-t)!important;font-weight:500;}
+@media(max-width:860px){.nav-right .nav-login{display:none;}}
+
 /* ── honeypot ────────────────────────────────────────────────────── */
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0;}
 
