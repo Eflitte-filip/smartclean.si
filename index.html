@@ -1,549 +1,95 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartClean – Profesionalni pralni servis</title>
-  <meta name="description" content="SmartClean – profesionalni pralni servis za hotele, restavracije, industrijo in zdravstveni sektor."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --green:#1a6644; --green-l:#2d8a5e; --green-m:#e8f5ee; --accent:#a8e6c3;
-      --gold:#c49a2a; --gold-l:#f0c456; --gold-m:#fdf3d7;
-      --blue:#2d6fa3; --blue-l:#4a90cc; --blue-m:#e8f2fb;
-      --coral:#c45f3a; --coral-m:#fdf0ea;
-      --dark:#0d1f17; --mid:#4a5e53; --light:#faf7f2; --white:#ffffff;
-      --serif:'Playfair Display',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
-      --radius:12px; --shadow:0 8px 40px rgba(26,102,68,.13);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--sans);background:var(--light);color:var(--dark);overflow-x:hidden;}
-    img{display:block;max-width:100%;}
-    a{color:inherit;text-decoration:none;}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script>try{var t=localStorage.getItem("smartclean-theme");document.documentElement.setAttribute("data-theme",(t==="light"||t==="dark")?t:"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+<title>SmartClean – profesionalna pralnica za podjetja | Slovenija</title>
+<meta name="description" content="Profesionalen pralni servis za hotele, restavracije, industrijo in zdravstvo. Prevzem, pranje in dostava po vsej Sloveniji."/>
+<link rel="canonical" href="https://smartclean.si/"/>
+<meta name="robots" content="index,follow,max-image-preview:large"/>
+<meta name="author" content="BSMART d.o.o."/>
+<meta name="theme-color" content="#1a6644"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a6644'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23a8e6c3' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23a8e6c3'/%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="assets/og.png"/>
 
-    .container{max-width:1140px;margin:0 auto;padding:0 28px;}
-    .section{padding:100px 0;}
-    .label{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:14px;}
-    h2.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);line-height:1.15;color:var(--dark);margin-bottom:20px;}
-    .section-sub{font-size:1.05rem;color:var(--mid);max-width:600px;line-height:1.75;}
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SmartClean"/>
+<meta property="og:locale" content="sl_SI"/>
+<meta property="og:title" content="SmartClean – profesionalna pralnica za podjetja | Slovenija"/>
+<meta property="og:description" content="Profesionalen pralni servis za hotele, restavracije, industrijo in zdravstvo. Prevzem, pranje in dostava po vsej Sloveniji."/>
+<meta property="og:url" content="https://smartclean.si/"/>
+<meta property="og:image" content="https://smartclean.si/assets/og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="SmartClean – profesionalna pralnica za podjetja"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="SmartClean – profesionalna pralnica za podjetja | Slovenija"/>
+<meta name="twitter:description" content="Profesionalen pralni servis za hotele, restavracije, industrijo in zdravstvo. Prevzem, pranje in dostava po vsej Sloveniji."/>
+<meta name="twitter:image" content="https://smartclean.si/assets/og.png"/>
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 28px;background:rgba(244,250,247,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(26,102,68,.1);transition:box-shadow .3s;}
-    nav.scrolled{box-shadow:0 4px 30px rgba(26,102,68,.12);}
-    .nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
-    .nav-logo{display:flex;align-items:center;cursor:pointer;}
-    .nav-logo-text{font-family:var(--serif);font-size:1.55rem;font-weight:700;color:var(--dark);letter-spacing:-.03em;}
-    .nav-logo-text span{color:var(--green);}
-    .nav-links{display:flex;align-items:center;gap:26px;list-style:none;}
-    .nav-links a{font-size:.9rem;font-weight:500;color:var(--mid);transition:color .2s;cursor:pointer;}
-    .nav-links a:hover,.nav-links a.active{color:var(--green);}
-    .nav-cta{background:var(--green);color:var(--white)!important;padding:9px 22px;border-radius:100px;font-weight:500!important;transition:background .2s,transform .15s!important;}
-    .nav-cta:hover{background:var(--green-l)!important;transform:translateY(-1px);}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
-    .hamburger span{display:block;width:24px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s;}
-    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
-    .hamburger.open span:nth-child(2){opacity:0;}
-    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-    .mobile-menu{display:none;flex-direction:column;background:var(--light);border-top:1px solid rgba(26,102,68,.1);}
-    .mobile-menu a{display:block;padding:15px 28px;font-size:.95rem;font-weight:500;color:var(--mid);border-bottom:1px solid rgba(26,102,68,.07);transition:background .2s,color .2s;cursor:pointer;}
-    .mobile-menu a:hover{background:var(--green-m);color:var(--green);}
-    .mobile-menu.open{display:flex;}
-
-    /* PAGE TRANSITION */
-    #app{animation:pageFade .35s ease;}
-    @keyframes pageFade{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
-
-    /* PAGE HERO */
-    .page-hero{background:var(--dark);padding:160px 28px 90px;position:relative;overflow:hidden;}
-    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 85% 40%,rgba(45,138,94,.3) 0%,transparent 70%);}
-    .page-hero-inner{position:relative;max-width:1140px;margin:0 auto;}
-    .page-hero .label{color:var(--accent);}
-    .page-hero h1{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:18px;}
-    .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.6);max-width:560px;line-height:1.75;}
-
-    /* BUTTONS */
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--white);padding:14px 30px;border-radius:100px;font-weight:500;font-size:.95rem;font-family:var(--sans);border:none;cursor:pointer;transition:background .2s,transform .15s;}
-    .btn-primary:hover{background:var(--green-l);transform:translateY(-2px);}
-    .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.8);padding:14px 28px;border-radius:100px;font-weight:500;font-size:.95rem;border:1px solid rgba(255,255,255,.2);transition:border-color .2s,color .2s,transform .15s;cursor:pointer;}
-    .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
-    .btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--green);padding:14px 30px;border-radius:100px;font-weight:600;font-size:.95rem;transition:transform .15s,box-shadow .2s;border:none;cursor:pointer;}
-    .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15);}
-    .btn-outline-dark{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--green);padding:13px 26px;border-radius:100px;font-weight:500;font-size:.92rem;border:1.5px solid rgba(26,102,68,.3);transition:border-color .2s,background .2s,transform .15s;cursor:pointer;font-family:var(--sans);}
-    .btn-outline-dark:hover{border-color:var(--green);background:var(--green-m);transform:translateY(-2px);}
-
-    /* FLOATING CTA */
-    .floating-cta{position:fixed;bottom:28px;right:28px;z-index:90;transform:translateY(80px);opacity:0;transition:transform .45s cubic-bezier(.22,.61,.36,1),opacity .45s ease;pointer-events:none;}
-    .floating-cta.visible{transform:none;opacity:1;pointer-events:all;}
-    .floating-cta button{background:var(--green);color:var(--white);border:none;border-radius:100px;padding:13px 22px;font-family:var(--sans);font-size:.9rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 8px 32px rgba(26,102,68,.38);transition:background .2s,transform .2s;white-space:nowrap;}
-    .floating-cta button:hover{background:var(--green-l);transform:scale(1.04);}
-    .float-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulseDot 2s ease-in-out infinite;flex-shrink:0;}
-    @keyframes pulseDot{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.7;}}
-
-    .testi-sector{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:500;margin-top:18px;}
-
-    /* FOOTER */
-    footer{background:var(--dark);color:rgba(255,255,255,.45);padding:36px 28px;text-align:center;font-size:.85rem;line-height:1.8;}
-    footer strong{color:rgba(255,255,255,.75);}
-    footer a{color:rgba(255,255,255,.45);transition:color .2s;}
-    footer a:hover{color:var(--accent);}
-
-    /* ANIMATIONS */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-    .reveal{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease;}
-    .reveal.visible{opacity:1;transform:none;}
-    .anim{animation:fadeUp .7s ease both;}
-    .anim-1{animation:fadeUp .7s .1s ease both;}
-    .anim-2{animation:fadeUp .7s .2s ease both;}
-    .anim-3{animation:fadeUp .7s .3s ease both;}
-    .anim-4{animation:fadeUp .7s .4s ease both;}
-
-    /* HERO */
-    .hero{min-height:100vh;display:grid;place-items:center;padding:120px 28px 80px;background:var(--dark);position:relative;overflow:hidden;}
-    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 80% 30%,rgba(45,138,94,.35) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 20% 80%,rgba(26,102,68,.25) 0%,transparent 65%);}
-    .hero-deco{position:absolute;border-radius:50%;border:1px solid rgba(168,230,195,.12);pointer-events:none;}
-    .hero-deco-1{width:600px;height:600px;top:-150px;right:-150px;animation:float 8s ease-in-out infinite;}
-    .hero-deco-2{width:400px;height:400px;bottom:-100px;left:-100px;animation:float 6s 2s ease-in-out infinite;}
-    .hero-deco-3{width:200px;height:200px;top:40%;left:45%;animation:float 5s 1s ease-in-out infinite;}
-    .hero-inner{position:relative;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;}
-    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,230,195,.15);border:1px solid rgba(168,230,195,.3);color:var(--accent);padding:6px 16px;border-radius:100px;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;}
-    .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulseDot 2s infinite;flex-shrink:0;}
-    .hero h1{font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.4rem);font-weight:900;line-height:1.08;color:var(--white);margin-bottom:24px;}
-    .hero h1 em{font-style:normal;color:var(--accent);}
-    .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:38px;}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
-    .hero-stats{display:flex;gap:32px;flex-wrap:wrap;margin-top:50px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);}
-    .hero-stat-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold-l);}
-    .hero-stat-label{font-size:.8rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;}
-    .hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(168,230,195,.18);border-radius:20px;padding:32px;backdrop-filter:blur(12px);}
-    .hero-card-title{font-family:var(--serif);font-size:1.1rem;color:var(--white);margin-bottom:20px;}
-    .service-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
-    .service-list li{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.75);font-size:.92rem;}
-    .service-list li::before{content:'';flex-shrink:0;width:18px;height:18px;border-radius:50%;background:rgba(168,230,195,.2);border:1px solid var(--accent);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23a8e6c3' stroke-width='2'%3E%3Cpolyline points='2,6 5,9 10,3'/%3E%3C/svg%3E");background-size:10px;background-repeat:no-repeat;background-position:center;}
-    .pill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
-    .pill-tag{background:rgba(168,230,195,.12);border:1px solid rgba(168,230,195,.22);color:var(--accent);padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:500;}
-
-    /* ══════════════════════════════════════
-       LAUNDRY SCROLL ANIMATION
-    ══════════════════════════════════════ */
-    .laundry-scroll-wrap{height:300vh;position:relative;}
-    .laundry-sticky{
-      position:sticky;top:0;height:100vh;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      background:var(--dark);overflow:hidden;padding:80px 28px 60px;
-    }
-    .laundry-sticky::before{
-      content:'';position:absolute;inset:0;
-      background:
-        radial-gradient(ellipse 65% 55% at 20% 50%,rgba(45,138,94,.16) 0%,transparent 70%),
-        radial-gradient(ellipse 50% 45% at 85% 60%,rgba(26,102,68,.1) 0%,transparent 65%);
-    }
-    .laundry-header{text-align:center;position:relative;margin-bottom:44px;}
-    .laundry-eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
-    .laundry-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);line-height:1.25;}
-    .laundry-content{
-      display:grid;grid-template-columns:1fr 1fr;gap:64px;
-      align-items:center;max-width:940px;width:100%;position:relative;
-    }
-
-    /* illustration area */
-    .laundry-scenes{position:relative;width:100%;max-width:330px;aspect-ratio:330/295;margin:0 auto;}
-    .l-scene{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;display:flex;align-items:center;justify-content:center;}
-    .l-scene.active{opacity:1;}
-    .l-scene svg{width:100%;height:100%;}
-
-    /* text side */
-    .laundry-text-panel{position:relative;min-height:200px;display:flex;flex-direction:column;justify-content:center;}
-    .l-text{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;display:flex;flex-direction:column;justify-content:center;}
-    .l-text.active{opacity:1;transform:none;position:relative;}
-    .l-step-num{font-family:var(--serif);font-size:5rem;font-weight:900;color:rgba(168,230,195,.1);line-height:1;margin-bottom:-6px;}
-    .l-step-title{font-family:var(--serif);font-size:1.65rem;color:var(--white);margin-bottom:14px;}
-    .l-step-desc{font-size:.95rem;color:rgba(255,255,255,.58);line-height:1.78;max-width:380px;}
-    .laundry-dots{display:flex;gap:10px;margin-top:28px;}
-    .l-dot{height:8px;border-radius:4px;background:rgba(168,230,195,.2);transition:background .35s,width .35s;width:8px;}
-    .l-dot.active{background:var(--accent);width:28px;}
-
-    /* scroll hint arrow */
-    .laundry-scroll-hint{
-      position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
-      display:flex;flex-direction:column;align-items:center;gap:7px;
-      color:rgba(255,255,255,.28);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-      transition:opacity .45s;pointer-events:none;
-    }
-    .scroll-arrow{width:16px;height:16px;border-right:2px solid rgba(255,255,255,.2);border-bottom:2px solid rgba(255,255,255,.2);transform:rotate(45deg);animation:scrollBounce 1.6s ease-in-out infinite;}
-    @keyframes scrollBounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(5px);}}
-
-    /* ── SVG animation keyframes ── */
-    @keyframes drumSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-    @keyframes bubbleRise{0%{transform:translateY(0);opacity:.6;}75%{opacity:.3;}100%{transform:translateY(-52px) scale(.5);opacity:0;}}
-    @keyframes ironSlide{0%{transform:translateX(-58px);}50%{transform:translateX(58px);}100%{transform:translateX(-58px);}}
-    @keyframes steamRise{0%{opacity:0;transform:translateY(0);}25%{opacity:.75;}100%{opacity:0;transform:translateY(-44px) scaleX(1.5);}}
-    @keyframes foldDrop{from{transform:translateY(-32px);opacity:0;}to{transform:none;opacity:1;}}
-    @keyframes checkPop{from{transform:scale(0) rotate(-20deg);opacity:0;}to{transform:scale(1) rotate(0deg);opacity:1;}}
-    @keyframes shine{from{transform:translateX(-140px);}to{transform:translateX(180px);}}
-
-    /* washing machine */
-    .drum-anim{transform-box:fill-box;transform-origin:center;animation-play-state:paused;}
-    .l-scene-wash.active .drum-anim{animation:drumSpin 4.5s linear infinite;animation-play-state:running;}
-    .bubble-anim{opacity:0;animation-play-state:paused;}
-    .l-scene-wash.active .bubble-anim{animation:bubbleRise 2.5s ease-out infinite;animation-play-state:running;}
-    .l-scene-wash.active .ba2{animation-delay:.9s;}
-    .l-scene-wash.active .ba3{animation-delay:1.8s;}
-
-    /* iron */
-    .iron-anim{transform-box:fill-box;transform-origin:center;animation-play-state:paused;}
-    .l-scene-iron.active .iron-anim{animation:ironSlide 2.8s ease-in-out infinite;animation-play-state:running;}
-    .steam-path{opacity:0;animation-play-state:paused;}
-    .l-scene-iron.active .steam-path{animation:steamRise 1.8s ease-out infinite;animation-play-state:running;}
-    .l-scene-iron.active .sp2{animation-delay:.6s;}
-    .l-scene-iron.active .sp3{animation-delay:1.2s;}
-
-    /* folded clothes */
-    .fold-item{opacity:0;}
-    .l-scene-fold.active .fold-item:nth-child(1){animation:foldDrop .48s .05s ease forwards;}
-    .l-scene-fold.active .fold-item:nth-child(2){animation:foldDrop .48s .2s ease forwards;}
-    .l-scene-fold.active .fold-item:nth-child(3){animation:foldDrop .48s .35s ease forwards;}
-    .l-scene-fold.active .fold-item:nth-child(4){animation:foldDrop .48s .5s ease forwards;}
-    .l-scene-fold.active .fold-item:nth-child(5){animation:foldDrop .48s .65s ease forwards;}
-    .check-mark{opacity:0;}
-    .l-scene-fold.active .check-mark{animation:checkPop .55s .9s cubic-bezier(.175,.885,.32,1.275) forwards;}
-    .shine-rect{opacity:0;}
-    .l-scene-fold.active .shine-rect{animation:shine 1.3s 1.3s ease forwards;opacity:1;}
-
-    /* mobile: static fallback */
-    @media(max-width:860px){
-      .laundry-scroll-wrap{height:auto!important;}
-      .laundry-sticky{position:relative!important;height:auto!important;padding:70px 20px 60px;}
-      .laundry-content{grid-template-columns:1fr;gap:32px;}
-      .laundry-scenes{display:none;}
-      .l-text{position:relative!important;opacity:1!important;transform:none!important;margin-bottom:32px;}
-      .laundry-text-panel{min-height:auto;gap:0;}
-      .laundry-scroll-hint{display:none;}
-      .l-step-num{font-size:3.5rem;}
-    }
-
-    /* SERVICES */
-    .services{background:var(--white);}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
-    .service-card{background:var(--light);border:1px solid rgba(26,102,68,.1);border-radius:var(--radius);padding:36px 28px;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden;}
-    .service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
-    .service-card:nth-child(2)::after{background:var(--gold);}
-    .service-card:nth-child(3)::after{background:var(--blue);}
-    .service-card:nth-child(4)::after{background:var(--coral);}
-    .service-card:nth-child(5)::after{background:var(--gold);}
-    .service-card:nth-child(6)::after{background:var(--blue);}
-    .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(26,102,68,.2);}
-    .service-card:hover::after{transform:scaleX(1);}
-    .service-icon{width:52px;height:52px;background:var(--green-m);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.4rem;}
-    .service-card:nth-child(2) .service-icon{background:var(--gold-m);}
-    .service-card:nth-child(3) .service-icon{background:var(--blue-m);}
-    .service-card:nth-child(4) .service-icon{background:var(--coral-m);}
-    .service-card:nth-child(5) .service-icon{background:var(--gold-m);}
-    .service-card:nth-child(6) .service-icon{background:var(--blue-m);}
-    .service-card h3{font-family:var(--serif);font-size:1.2rem;margin-bottom:12px;color:var(--dark);}
-    .service-card p{font-size:.9rem;color:var(--mid);line-height:1.7;}
-
-    /* HOW IT WORKS */
-    .hiw{background:var(--light);}
-    .hiw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative;}
-    .hiw-grid::before{content:'';position:absolute;top:34px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--green-m),var(--accent),var(--green-m));z-index:0;}
-    .hiw-step{text-align:center;padding:0 20px;position:relative;z-index:1;}
-    .hiw-num{width:68px;height:68px;border-radius:50%;background:var(--green);color:var(--white);font-family:var(--serif);font-size:1.3rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 0 8px var(--light),0 0 0 9px rgba(26,102,68,.15);transition:transform .25s,box-shadow .25s;}
-    .hiw-step:hover .hiw-num{transform:scale(1.1);box-shadow:0 0 0 8px var(--light),0 0 0 10px rgba(26,102,68,.3);}
-    .hiw-step h4{font-family:var(--serif);font-size:1.05rem;color:var(--dark);margin-bottom:8px;}
-    .hiw-step p{font-size:.87rem;color:var(--mid);line-height:1.65;}
-
-    /* APPROACH */
-    .approach{background:var(--dark);position:relative;overflow:hidden;}
-    .approach::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 90% 50%,rgba(45,138,94,.2) 0%,transparent 70%);}
-    .approach-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-    .approach-left h2{color:var(--white);}
-    .approach-left .section-sub{color:rgba(255,255,255,.55);}
-    .approach-right{display:flex;flex-direction:column;gap:28px;}
-    .approach-item{display:flex;gap:20px;align-items:flex-start;}
-    .approach-num{flex-shrink:0;width:40px;height:40px;background:rgba(168,230,195,.1);border:1px solid rgba(168,230,195,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--gold-l);font-size:.95rem;}
-    .approach-item h4{font-family:var(--serif);font-size:1.05rem;color:var(--white);margin-bottom:6px;}
-    .approach-item p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.7;}
-
-    /* STATS BAND */
-    .stats-band{background:linear-gradient(135deg,#0d2e1a 0%,#1a6644 55%,#1a4a70 100%);padding:64px 0;}
-    .stats-band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
-    .stat-item{text-align:center;padding:0 20px;border-right:1px solid rgba(255,255,255,.15);}
-    .stat-item:last-child{border-right:none;}
-    .stat-num{font-family:var(--serif);font-size:3rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:8px;}
-    .stat-num .stat-suffix{font-size:2rem;}
-    .stat-label{font-size:.82rem;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.14em;line-height:1.5;}
-
-    /* TESTIMONIALS */
-    .testimonials{background:var(--white);}
-    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
-    .testi-card{background:var(--light);border:1px solid rgba(26,102,68,.1);border-radius:var(--radius);padding:32px 28px;transition:transform .25s,box-shadow .25s;}
-    .testi-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
-    .testi-stars{display:flex;gap:3px;margin-bottom:16px;}
-    .testi-stars span{color:#f5a623;font-size:1rem;}
-    .testi-quote{font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:12px;font-family:Georgia,serif;}
-    .testi-text{font-size:.93rem;color:var(--mid);line-height:1.75;margin-bottom:22px;font-style:italic;}
-    .testi-author{display:flex;align-items:center;gap:12px;}
-    .testi-avatar{width:42px;height:42px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--white);font-size:1rem;flex-shrink:0;}
-    .testi-name{font-size:.9rem;font-weight:500;color:var(--dark);}
-    .testi-role{font-size:.78rem;color:var(--green);font-weight:500;text-transform:uppercase;letter-spacing:.07em;margin-top:2px;}
-
-    /* PARTNERS */
-    .partners{background:var(--green-m);}
-    .partners-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:48px;}
-    .partner-card{background:var(--white);border:1px solid rgba(26,102,68,.12);border-radius:var(--radius);width:140px;height:100px;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform .2s,box-shadow .2s;}
-    .partner-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
-    .partner-card img{width:90px;height:90px;object-fit:contain;}
-
-    /* CONTACT STRIP */
-    .contact-strip{background:var(--green);padding:80px 0;}
-    .contact-strip-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
-    .contact-strip h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);}
-    .contact-strip p{color:rgba(255,255,255,.75);margin-top:8px;}
-
-    /* O NAS */
-    .onas-story{background:var(--white);}
-    .onas-story-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-    .onas-story-visual{background:linear-gradient(135deg,var(--green) 0%,var(--green-l) 100%);border-radius:20px;padding:48px 40px;color:var(--white);overflow:hidden;position:relative;}
-    .onas-story-visual::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06);}
-    .onas-story-visual::after{content:'';position:absolute;bottom:-30px;left:-30px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.04);}
-    .onas-visual-icon{font-size:3.5rem;margin-bottom:20px;}
-    .onas-visual-headline{font-family:var(--serif);font-size:1.6rem;font-weight:700;margin-bottom:12px;position:relative;}
-    .onas-visual-text{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.75;position:relative;}
-    .onas-mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;position:relative;}
-    .onas-mini-stat{background:rgba(255,255,255,.1);border-radius:10px;padding:16px;}
-    .onas-mini-stat-num{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:var(--accent);}
-    .onas-mini-stat-label{font-size:.75rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.09em;margin-top:4px;}
-    .onas-story-text h2{color:var(--dark);}
-    .onas-story-text p{font-size:.97rem;color:var(--mid);line-height:1.8;margin-bottom:16px;}
-    .onas-values{background:var(--light);}
-    .onas-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
-    .onas-val-card{background:var(--white);border:1px solid rgba(26,102,68,.1);border-radius:var(--radius);padding:36px 28px;transition:transform .25s,box-shadow .25s;text-align:center;}
-    .onas-val-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
-    .onas-val-icon{width:68px;height:68px;background:var(--green-m);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;}
-    .onas-val-card h3{font-family:var(--serif);font-size:1.15rem;margin-bottom:10px;color:var(--dark);}
-    .onas-val-card p{font-size:.9rem;color:var(--mid);line-height:1.7;}
-    .onas-certs{background:var(--dark);}
-    .onas-certs-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-    .onas-certs-left h2{color:var(--white);}
-    .onas-certs-left .section-sub{color:rgba(255,255,255,.55);}
-    .cert-grid{display:flex;flex-direction:column;gap:16px;}
-    .cert-item{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.06);border:1px solid rgba(168,230,195,.15);border-radius:var(--radius);padding:18px 22px;transition:border-color .2s;}
-    .cert-item:hover{border-color:rgba(168,230,195,.35);}
-    .cert-icon{flex-shrink:0;width:42px;height:42px;background:rgba(168,230,195,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
-    .cert-item h4{font-size:.95rem;font-weight:500;color:var(--white);margin-bottom:3px;}
-    .cert-item p{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.5;}
-
-    /* PANOGE */
-    .panoge-intro{background:var(--white);}
-    .panoge-intro-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-    .panoge-intro p{font-size:.97rem;color:var(--mid);line-height:1.8;margin-bottom:16px;}
-    .panoge-section{background:var(--light);}
-    .panoge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:56px;}
-    .panoga-card{background:var(--white);border:1px solid rgba(26,102,68,.1);border-radius:16px;padding:36px 32px;transition:transform .25s,box-shadow .25s,border-color .25s;overflow:hidden;position:relative;}
-    .panoga-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--green-l));transform:scaleX(0);transform-origin:left;transition:transform .35s;}
-    .panoga-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(26,102,68,.18);}
-    .panoga-card:hover::before{transform:scaleX(1);}
-    .panoga-header{display:flex;align-items:flex-start;gap:18px;margin-bottom:16px;}
-    .panoga-icon{flex-shrink:0;width:56px;height:56px;background:var(--green-m);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:background .25s;}
-    .panoga-card:hover .panoga-icon{background:var(--green);}
-    .panoga-card h3{font-family:var(--serif);font-size:1.2rem;color:var(--dark);margin-bottom:4px;}
-    .panoga-tag{font-size:.72rem;font-weight:500;color:var(--green);text-transform:uppercase;letter-spacing:.1em;}
-    .panoga-card>p{font-size:.9rem;color:var(--mid);line-height:1.7;margin-bottom:20px;}
-    .panoga-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
-    .panoga-features li{display:flex;align-items:center;gap:10px;font-size:.86rem;color:var(--mid);}
-    .panoga-features li::before{content:'';flex-shrink:0;width:16px;height:16px;border-radius:50%;background:var(--green-m);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%231a6644' stroke-width='2'%3E%3Cpolyline points='2,6 5,9 10,3'/%3E%3C/svg%3E");background-size:9px;background-repeat:no-repeat;background-position:center;}
-    .panoge-cta{background:var(--green);padding:80px 0;}
-    .panoge-cta-inner{text-align:center;}
-    .panoge-cta h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);margin-bottom:14px;}
-    .panoge-cta p{color:rgba(255,255,255,.75);font-size:1rem;margin-bottom:32px;line-height:1.7;max-width:500px;margin-left:auto;margin-right:auto;}
-
-    /* FAQ */
-    .faq-section{background:var(--white);}
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:64px;align-items:start;}
-    .faq-search-wrap{position:relative;margin-bottom:16px;}
-    .faq-search{width:100%;padding:13px 18px 13px 44px;border:1.5px solid rgba(26,102,68,.15);border-radius:var(--radius);font-family:var(--sans);font-size:.92rem;color:var(--dark);background:var(--light);outline:none;transition:border-color .2s;}
-    .faq-search:focus{border-color:var(--green);}
-    .faq-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;}
-    .faq-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
-    .faq-cat-btn{padding:6px 16px;border-radius:100px;border:1.5px solid rgba(26,102,68,.2);background:none;font-family:var(--sans);font-size:.82rem;color:var(--mid);cursor:pointer;transition:all .2s;}
-    .faq-cat-btn:hover,.faq-cat-btn.active{background:var(--green);border-color:var(--green);color:var(--white);}
-    .accordion{display:flex;flex-direction:column;gap:10px;}
-    .acc-item{background:var(--light);border:1.5px solid rgba(26,102,68,.1);border-radius:var(--radius);overflow:hidden;transition:border-color .2s;}
-    .acc-item.open{border-color:rgba(26,102,68,.3);}
-    .acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 22px;background:none;border:none;font-family:var(--sans);font-size:.97rem;font-weight:500;color:var(--dark);text-align:left;cursor:pointer;gap:14px;}
-    .acc-trigger:hover{color:var(--green);}
-    .acc-icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(26,102,68,.25);display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .3s;color:var(--green);font-size:.85rem;}
-    .acc-item.open .acc-icon{background:var(--green);border-color:var(--green);color:white;transform:rotate(45deg);}
-    .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
-    .acc-body-inner{padding:0 22px 20px;font-size:.92rem;color:var(--mid);line-height:1.75;}
-    .acc-body-inner a{color:var(--green);text-decoration:underline;}
-    .faq-sidebar h3{font-family:var(--serif);font-size:1.3rem;color:var(--dark);margin-bottom:12px;}
-    .faq-sidebar>p{font-size:.92rem;color:var(--mid);line-height:1.75;margin-bottom:24px;}
-    .faq-contact-card{background:var(--green);border-radius:var(--radius);padding:30px;color:var(--white);}
-    .faq-contact-card h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:8px;}
-    .faq-contact-card p{font-size:.88rem;color:rgba(255,255,255,.75);margin-bottom:18px;line-height:1.6;}
-    .mini-contact-list{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
-    .mini-contact-item{display:flex;gap:12px;align-items:center;}
-    .mini-ico{flex-shrink:0;width:38px;height:38px;background:var(--green-m);border-radius:9px;display:flex;align-items:center;justify-content:center;}
-    .mini-label{font-size:.72rem;font-weight:500;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px;}
-    .mini-val{font-size:.9rem;color:var(--mid);}
-    .mini-val a{color:var(--mid);transition:color .2s;}
-    .mini-val a:hover{color:var(--green);}
-
-    /* ZAPOSLITEV */
-    .why-join{background:var(--white);}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
-    .why-card{background:var(--light);border:1px solid rgba(26,102,68,.1);border-radius:var(--radius);padding:30px 24px;transition:transform .25s,box-shadow .25s;}
-    .why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
-    .why-icon{font-size:1.8rem;margin-bottom:14px;}
-    .why-card h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:9px;color:var(--dark);}
-    .why-card p{font-size:.88rem;color:var(--mid);line-height:1.7;}
-    .roles-section{background:var(--green-m);}
-    .roles-grid{display:flex;flex-direction:column;gap:16px;margin-top:40px;}
-    .role-card{background:var(--white);border:1px solid rgba(26,102,68,.12);border-radius:var(--radius);padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:border-color .2s,box-shadow .2s;}
-    .role-card:hover{border-color:var(--green);box-shadow:var(--shadow);}
-    .role-info h3{font-family:var(--serif);font-size:1.1rem;color:var(--dark);margin-bottom:10px;}
-    .role-tags{display:flex;gap:7px;flex-wrap:wrap;}
-    .role-tag{background:var(--green-m);color:var(--green);padding:4px 12px;border-radius:100px;font-size:.76rem;font-weight:500;}
-    .role-tag.type{background:rgba(26,102,68,.08);}
-    .role-apply{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--white);padding:10px 22px;border-radius:100px;font-weight:500;font-size:.88rem;cursor:pointer;transition:background .2s,transform .15s;border:none;font-family:var(--sans);}
-    .role-apply:hover{background:var(--green-l);transform:translateY(-1px);}
-    .open-call{background:var(--dark);border-radius:16px;padding:36px;text-align:center;}
-    .open-call h3{font-family:var(--serif);font-size:1.35rem;color:var(--white);margin-bottom:10px;}
-    .open-call p{color:rgba(255,255,255,.6);margin-bottom:22px;font-size:.95rem;line-height:1.65;}
-    .apply-section{background:var(--white);}
-    .apply-inner{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start;}
-    .value-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:24px;}
-    .value-list li{display:flex;align-items:flex-start;gap:12px;font-size:.92rem;color:var(--mid);}
-    .value-list li::before{content:'✓';flex-shrink:0;width:20px;height:20px;background:var(--green-m);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--green);font-size:.72rem;font-weight:700;}
-    .file-label{display:flex;align-items:center;gap:12px;padding:13px 18px;border:1.5px dashed rgba(26,102,68,.25);border-radius:var(--radius);cursor:pointer;color:var(--mid);font-size:.92rem;transition:border-color .2s,background .2s;}
-    .file-label:hover{border-color:var(--green);background:var(--green-m);}
-    .file-label input[type="file"]{display:none;}
-
-    /* KONTAKT */
-    .contact-section{background:var(--white);}
-    .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start;margin-top:64px;}
-    .info-cards{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
-    .info-card{display:flex;gap:16px;align-items:flex-start;background:var(--light);border:1px solid rgba(26,102,68,.1);border-radius:var(--radius);padding:20px 22px;transition:border-color .2s,box-shadow .2s;}
-    .info-card:hover{border-color:rgba(26,102,68,.25);box-shadow:var(--shadow);}
-    .info-ico{flex-shrink:0;width:44px;height:44px;background:var(--green-m);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
-    .info-card h4{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
-    .info-card p,.info-card a{font-size:.92rem;color:var(--mid);line-height:1.55;}
-    .info-card a:hover{color:var(--green);}
-    .contact-form-wrap h3{font-family:var(--serif);font-size:1.45rem;color:var(--dark);margin-bottom:6px;}
-    .contact-form-wrap>p{font-size:.92rem;color:var(--mid);margin-bottom:24px;line-height:1.6;}
-    .map-section{background:var(--green-m);padding:80px 0;}
-    .map-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
-    .map-info h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);color:var(--dark);margin-bottom:14px;}
-    .map-info p{font-size:.95rem;color:var(--mid);line-height:1.75;margin-bottom:22px;}
-    .map-frame{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
-    .map-frame iframe{display:block;width:100%;height:340px;border:none;}
-    #form-success{display:none;background:var(--green-m);border:1px solid rgba(26,102,68,.2);border-radius:var(--radius);padding:16px 20px;color:var(--green);font-size:.92rem;line-height:1.55;margin-bottom:16px;}
-
-    /* FORMS */
-    .sc-form{display:flex;flex-direction:column;gap:14px;}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-    .sc-form input,.sc-form textarea,.sc-form select{width:100%;padding:13px 18px;border:1.5px solid rgba(26,102,68,.15);border-radius:var(--radius);font-family:var(--sans);font-size:.92rem;color:var(--dark);background:var(--light);outline:none;transition:border-color .2s;}
-    .sc-form input:focus,.sc-form textarea:focus,.sc-form select:focus{border-color:var(--green);}
-    .sc-form textarea{resize:vertical;min-height:130px;}
-    .sc-form .form-note{font-size:.76rem;color:var(--mid);}
-    .sc-form .form-msg{font-size:.85rem;color:var(--green);display:none;}
-
-    /* RESPONSIVE */
-    @media(max-width:860px){
-      .nav-links{display:none;}.hamburger{display:flex;}
-      .section{padding:70px 0;}
-      .hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}
-      .services-grid{grid-template-columns:1fr;}
-      .approach-inner{grid-template-columns:1fr;gap:40px;}
-      .faq-grid{grid-template-columns:1fr;}
-      .why-grid{grid-template-columns:1fr;}
-      .role-card{flex-direction:column;align-items:flex-start;}
-      .apply-inner{grid-template-columns:1fr;gap:48px;}
-      .contact-grid{grid-template-columns:1fr;gap:48px;}
-      .map-inner{grid-template-columns:1fr;}
-      .contact-strip-inner{flex-direction:column;text-align:center;}
-      .form-row{grid-template-columns:1fr;}
-      .page-hero{padding:130px 20px 70px;}
-      .hiw-grid{grid-template-columns:1fr 1fr;gap:32px;}
-      .hiw-grid::before{display:none;}
-      .stats-band-grid{grid-template-columns:1fr 1fr;gap:24px;}
-      .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:24px;}
-      .testimonials-grid{grid-template-columns:1fr;}
-      .onas-story-inner{grid-template-columns:1fr;gap:48px;}
-      .onas-values-grid{grid-template-columns:1fr;}
-      .onas-certs-inner{grid-template-columns:1fr;gap:48px;}
-      .panoge-grid{grid-template-columns:1fr;}
-      .panoge-intro-inner{grid-template-columns:1fr;gap:40px;}
-      .floating-cta{bottom:18px;right:18px;}
-    }
-    @media(max-width:520px){
-      .hiw-grid{grid-template-columns:1fr;}
-      .stats-band-grid{grid-template-columns:1fr;}
-    }
-  </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/style.css"/>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "LaundryOrCleaningService",
+  "@id": "https://smartclean.si/#organizacija",
+  "name": "SmartClean",
+  "legalName": "BSMART d.o.o.",
+  "url": "https://smartclean.si/",
+  "logo": "https://smartclean.si/assets/og.png",
+  "image": "https://smartclean.si/assets/og.png",
+  "description": "Profesionalen pralni servis za hotele, restavracije, industrijo in zdravstveni sektor.",
+  "telephone": "+386 41 209 676",
+  "email": "info@smartcleanofficial.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Škalska cesta 6",
+    "postalCode": "3210",
+    "addressLocality": "Slovenske Konjice",
+    "addressCountry": "SI"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Slovenija"
+  },
+  "priceRange": "$$",
+  "sameAs": []
+}</script>
 </head>
-<body>
-
+<body data-page="home">
+<a class="skip-link" href="#main">Preskoči na vsebino</a>
 <nav id="nav">
   <div class="nav-inner">
-    <div class="nav-logo" onclick="navigate('home')">
+    <a class="nav-logo" href="/" aria-label="SmartClean – domov">
       <span class="nav-logo-text">Smart<span>Clean</span></span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/o-nas/" id="nl-onas">O nas</a></li>
+        <li><a href="/panoge/" id="nl-panoge">Panoge</a></li>
+        <li><a href="/#storitve" id="nl-storitve">Storitve</a></li>
+        <li><a href="/faq/" id="nl-faq">FAQ</a></li>
+        <li><a href="/zaposlitev/" id="nl-zaposlitev">Zaposlitev</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Preklop svetle in temne teme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a href="/kontakt/" class="nav-cta" id="nl-kontakt">Kontakt</a>
+      <button class="hamburger" id="hamburger" aria-label="Meni" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a onclick="navigate('onas')" id="nl-onas">O nas</a></li>
-      <li><a onclick="navigate('panoge')" id="nl-panoge">Panoge</a></li>
-      <li><a onclick="navigate('home','storitve')" id="nl-storitve">Storitve</a></li>
-      <li><a onclick="navigate('faq')" id="nl-faq">FAQ</a></li>
-      <li><a onclick="navigate('zaposlitev')" id="nl-zaposlitev">Zaposlitev</a></li>
-      <li><a onclick="navigate('kontakt')" class="nav-cta" id="nl-kontakt">Kontakt</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Meni"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a onclick="navigate('onas');closeMenu()">O nas</a>
-    <a onclick="navigate('panoge');closeMenu()">Panoge</a>
-    <a onclick="navigate('home','storitve');closeMenu()">Storitve</a>
-    <a onclick="navigate('faq');closeMenu()">FAQ</a>
-    <a onclick="navigate('zaposlitev');closeMenu()">Zaposlitev</a>
-    <a onclick="navigate('kontakt');closeMenu()">Kontakt</a>
+    <a href="/o-nas/">O nas</a>
+    <a href="/panoge/">Panoge</a>
+    <a href="/#storitve">Storitve</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/zaposlitev/">Zaposlitev</a>
+    <a href="/kontakt/">Kontakt</a>
   </div>
 </nav>
-
-<div id="app"></div>
-
-<!-- persistent floating CTA -->
-<div class="floating-cta" id="floatingCta">
-  <button onclick="navigate('kontakt')">
-    <span class="float-dot"></span> Povpraševanje
-  </button>
-</div>
-
-<!-- FOOTER TEMPLATE -->
-<template id="footer-tpl">
-  <footer>
-    <strong>SmartClean – BSMART d.o.o.</strong><br>
-    Škalska Cesta 6, 3210 Slovenske Konjice &nbsp;|&nbsp;
-    <a href="tel:+38641209676">+386 41 209 676</a> &nbsp;|&nbsp;
-    <a href="mailto:info@smartcleanofficial.com">info@smartcleanofficial.com</a><br>
-    <span style="font-size:.78rem;margin-top:8px;display:block;">
-      © 2025 BSMART d.o.o. Vse pravice pridržane. &nbsp;·&nbsp;
-      <a onclick="navigate('kontakt')" style="cursor:pointer;">Kontakt</a> &nbsp;·&nbsp;
-      <a onclick="navigate('onas')" style="cursor:pointer;">O nas</a>
-    </span>
-  </footer>
-</template>
-
-<!-- ════════════ PAGE TEMPLATES ════════════ -->
-
-<!-- HOME -->
-<template id="page-home">
-
-  <section class="hero">
+<main id="main">
+<section class="hero">
     <div class="hero-deco hero-deco-1"></div>
     <div class="hero-deco hero-deco-2"></div>
     <div class="hero-deco hero-deco-3"></div>
@@ -552,11 +98,11 @@
         <h1 class="anim-1">Peremo,<br>vi pa <em>blestite.</em></h1>
         <p class="hero-sub anim-2">Mlado slovensko podjetje, ki skrbi za vaš tekstil z visoko kakovostjo, prilagojenimi rešitvami in zanesljivo dostavo. Vaš partner za hotele, restavracije, industrijo in zdravstveni sektor.</p>
         <div class="hero-actions anim-3">
-          <button class="btn-primary" onclick="navigate('kontakt')">Pošljite povpraševanje ↗</button>
-          <button class="btn-outline" onclick="navigate('panoge')">Naše panoge</button>
+          <a href="/kontakt/" class="btn-primary">Pošljite povpraševanje ↗</a>
+          <a href="/panoge/" class="btn-outline">Naše panoge</a>
         </div>
         <div class="hero-stats anim-4">
-          <div><div class="hero-stat-num">100+</div><div class="hero-stat-label">Zadovoljnih partnerjev</div></div>
+          <div><div class="hero-stat-num">50+</div><div class="hero-stat-label">Zadovoljnih partnerjev</div></div>
           <div><div class="hero-stat-num">24h</div><div class="hero-stat-label">Povprečni rok dostave</div></div>
           <div><div class="hero-stat-num">SI</div><div class="hero-stat-label">Slovensko podjetje</div></div>
         </div>
@@ -569,7 +115,7 @@
             <li>Posteljnina in brisače za hotele</li>
             <li>Namizno perilo za restavracije</li>
             <li>Čiščenje preprog in talnih oblog</li>
-            <li>Tekstil za sterilne prostore</li>
+            
             <li>Urejen prevzem in dostava</li>
           </ul>
           <div class="pill-tags">
@@ -587,41 +133,7 @@
   <section class="proc-section">
 
     <!-- CSS for proc section -->
-    <style>
-      .proc-section{background:#060f0a;padding:100px 0;position:relative;overflow:hidden;}
-      .proc-inner{max-width:900px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-      .proc-vis{display:flex;align-items:center;justify-content:center;position:relative;height:300px;}
-      .proc-ring-outer{width:240px;height:240px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;}
-      .proc-ring-outer::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(255,255,255,.07);animation:procRingSpin 22s linear infinite;}
-      @keyframes procRingSpin{to{transform:rotate(360deg);}}
-      .proc-disc{width:160px;height:160px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(26,102,68,.22);border:1px solid rgba(168,230,195,.18);box-shadow:0 0 50px rgba(45,138,94,.14);transition:background .6s,border-color .6s,box-shadow .6s;position:relative;}
-      .proc-arc{position:absolute;inset:-40px;border-radius:50%;}
-      .proc-arc svg{width:100%;height:100%;transform:rotate(-90deg);}
-      .proc-arc circle{fill:none;stroke-width:2;stroke-dasharray:810.5;stroke-dashoffset:810.5;stroke:var(--accent);stroke-linecap:round;transition:stroke .5s;}
-      .proc-icon{width:80px;height:80px;display:none;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .25s;}
-      .proc-icon.active{display:flex;}
-      .proc-icon svg{width:100%;height:100%;}
-      .proc-text{position:relative;min-height:220px;}
-      .proc-step{position:absolute;inset:0;opacity:0;transform:translateY(12px);transition:opacity .45s,transform .45s;pointer-events:none;display:flex;flex-direction:column;justify-content:center;}
-      .proc-step.active{opacity:1;transform:none;position:relative;pointer-events:auto;}
-      .proc-num{font-family:var(--serif);font-size:5rem;font-weight:900;color:rgba(255,255,255,.05);line-height:1;margin-bottom:-8px;}
-      .proc-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:14px;display:block;}
-      .proc-title{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.3rem);color:var(--white);line-height:1.12;margin-bottom:14px;}
-      .proc-desc{font-size:.95rem;color:rgba(255,255,255,.42);line-height:1.85;max-width:380px;}
-      .proc-dots{display:flex;gap:10px;margin-top:30px;align-items:center;}
-      .proc-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;border:none;padding:0;transition:background .3s,transform .3s;}
-      .proc-dot.active{background:var(--accent);transform:scale(1.45);}
-      .proc-dot:hover{background:rgba(255,255,255,.35);}
-      @media(max-width:860px){
-        .proc-inner{grid-template-columns:1fr;gap:36px;text-align:center;}
-        .proc-vis{height:220px;}
-        .proc-ring-outer{width:190px;height:190px;}
-        .proc-disc{width:130px;height:130px;}
-        .proc-icon{width:64px;height:64px;}
-        .proc-dots{justify-content:center;}
-        .proc-desc{margin:0 auto;}
-      }
-    </style>
+    
 
     <div class="proc-inner">
       <!-- LEFT: visual disc -->
@@ -677,66 +189,7 @@
       </div>
     </div>
 
-    <script>
-      (function(){
-        var STEPS = [
-  {arc:"#4a90cc",bg:"rgba(45,111,163,.25)",border:"rgba(74,144,204,.22)",glow:"rgba(74,144,204,.18)"},
-  {arc:"#a8e6c3",bg:"rgba(26,102,68,.25)",border:"rgba(168,230,195,.22)",glow:"rgba(45,138,94,.15)"},
-  {arc:"#f0c456",bg:"rgba(196,154,42,.22)",border:"rgba(240,196,86,.25)",glow:"rgba(240,196,86,.15)"},
-  {arc:"#c49a2a",bg:"rgba(196,154,42,.2)",border:"rgba(196,154,42,.22)",glow:"rgba(196,154,42,.12)"},
-  {arc:"#a8e6c3",bg:"rgba(26,102,68,.25)",border:"rgba(168,230,195,.22)",glow:"rgba(45,138,94,.15)"},
-];
-        var N = STEPS.length;
-        var cur = 0, raf = null, startTs = null;
-        var DURATION = 3400;
-        var circ = 810.5;
-
-        function applyStep(idx, instant){
-          var d = STEPS[idx];
-          var disc = document.getElementById('procDisc');
-          var arc  = document.getElementById('procArc');
-          if(disc){disc.style.background=d.bg;disc.style.borderColor=d.border;disc.style.boxShadow='0 0 50px '+d.glow;}
-          if(arc){arc.style.stroke=d.arc;if(instant)arc.style.strokeDashoffset=circ;}
-          for(var i=0;i<N;i++){
-            var on=(i===idx);
-            var ic=document.getElementById('picon'+i);
-            var st=document.getElementById('pstep'+i);
-            var dt=document.getElementById('pdot'+i);
-            if(ic){ic.classList.toggle('active',on);}
-            if(st){st.classList.toggle('active',on);}
-            if(dt){dt.classList.toggle('active',on);}
-          }
-        }
-
-        function tick(ts){
-          if(!startTs) startTs=ts;
-          var frac=Math.min((ts-startTs)/DURATION,1);
-          var arc=document.getElementById('procArc');
-          if(arc) arc.style.strokeDashoffset=(circ*(1-frac)).toFixed(1);
-          if(frac>=1){cur=(cur+1)%N;applyStep(cur,true);startTs=ts;}
-          raf=requestAnimationFrame(tick);
-        }
-
-        window.procGoTo=function(idx){
-          if(raf){cancelAnimationFrame(raf);raf=null;startTs=null;}
-          cur=idx; applyStep(idx,true);
-          var st2=null;
-          function t2(ts){if(!st2)st2=ts;var f=Math.min((ts-st2)/DURATION,1);var a=document.getElementById('procArc');if(a)a.style.strokeDashoffset=(circ*(1-f)).toFixed(1);if(f>=1){cur=(cur+1)%N;applyStep(cur,true);st2=ts;}raf=requestAnimationFrame(t2);}
-          raf=requestAnimationFrame(t2);
-        };
-
-        var obs=new IntersectionObserver(function(entries){
-          entries.forEach(function(e){
-            if(e.isIntersecting&&!raf){applyStep(cur,true);raf=requestAnimationFrame(tick);}
-            else if(!e.isIntersecting&&raf){cancelAnimationFrame(raf);raf=null;startTs=null;}
-          });
-        },{threshold:0.3});
-
-        var sec=document.getElementById('procSection')||document.querySelector('.proc-section');
-        if(sec) obs.observe(sec);
-        applyStep(0,true);
-      })();
-    </script>
+    
 
   </section>
 
@@ -759,14 +212,14 @@
     <div class="container">
       <span class="label reveal">Naše storitve</span>
       <h2 class="section-title reveal">Vaša prilagojena rešitev,<br>poenostavljena.</h2>
-      <p class="section-sub reveal">Pokrivamo vse tekstilne potrebe vašega podjetja – od delovnih oblačil do sterilnih sob.</p>
+      <p class="section-sub reveal">Pokrivamo tekstilne potrebe vašega podjetja – od posteljnine in brisač do delovnih oblačil.</p>
       <div class="services-grid">
-        <div class="service-card reveal"><div class="service-icon">🏭</div><h3>Industrija</h3><p>Celovita rešitev za delovna oblačila vseh sektorjev. Zagotavljamo čistočo, vzdržljivost in skladnost s standardi.</p></div>
-        <div class="service-card reveal"><div class="service-icon">🏨</div><h3>Hoteli</h3><p>Posteljnina, brisače in namizno perilo za vaše goste. Brezhiben videz in svežina pri vsakem kosu perila.</p></div>
-        <div class="service-card reveal"><div class="service-icon">🍽️</div><h3>Restavracije</h3><p>Brezhibno namizno perilo za vse vrste umazanij. Vaši gosti si zaslužijo impresivno urejen miz.</p></div>
-        <div class="service-card reveal"><div class="service-icon">🧹</div><h3>Talno perilo</h3><p>Čiščenje zunanjih in notranjih preprog ter tepihov. Primerno za poslovne in javne prostore.</p></div>
-        <div class="service-card reveal"><div class="service-icon">🔬</div><h3>Sterilne sobe</h3><p>Posebni tekstilni programi za čiste prostore, mikroelektronsko in farmacevtsko industrijo.</p></div>
-        <div class="service-card reveal"><div class="service-icon">🚐</div><h3>Prevzem & dostava</h3><p>Fleksibilni dostavni časi, prilagojeni vašim operativnim potrebam. Mi pridemo k vam.</p></div>
+        <div class="service-card reveal"><div class="service-icon" role="img" aria-label="Industrija"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 27.5V15.5l6.5 3.8v-3.8l6.5 3.8V9.5l8 4.8v13.2Z" fill="currentColor" fill-opacity=".08"/><path d="M2 27.5h28"/><path d="M9 23.5v-2.8M16 23.5v-2.8M23 23.5v-2.8"/><path d="M6.5 12.5v-4.5M4.5 10l2-2 2 2" stroke-width="1.4" opacity=".55"/></svg></div><h3>Industrija</h3><p>Celovita rešitev za delovna oblačila vseh sektorjev. Zagotavljamo čistočo, vzdržljivost in skladnost s standardi.</p></div>
+        <div class="service-card reveal"><div class="service-icon" role="img" aria-label="Hoteli"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21.5v-6a2.5 2.5 0 0 1 2.5-2.5h21a2.5 2.5 0 0 1 2.5 2.5v6Z" fill="currentColor" fill-opacity=".08"/><path d="M3 21.5h26"/><path d="M3 21.5v4M29 21.5v4"/><path d="M6.5 13V9.5a1.5 1.5 0 0 1 1.5-1.5h6a1.5 1.5 0 0 1 1.5 1.5V13" fill="currentColor" fill-opacity=".12"/><path d="M18 13v-1.5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2V13" stroke-width="1.4" opacity=".5"/></svg></div><h3>Hoteli</h3><p>Posteljnina, brisače in namizno perilo za vaše goste. Brezhiben videz in svežina pri vsakem kosu perila.</p></div>
+        <div class="service-card reveal"><div class="service-icon" role="img" aria-label="Restavracije"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 22.5a11.5 11.5 0 0 1 23 0Z" fill="currentColor" fill-opacity=".08"/><path d="M2 22.5h28"/><path d="M16 11V8"/><circle cx="16" cy="6.5" r="1.6"/><path d="M9 22.5a7 7 0 0 1 7-7" stroke-width="1.2" opacity=".45"/></svg></div><h3>Restavracije</h3><p>Brezhibno namizno perilo za vse vrste umazanij. Vaši gosti si zaslužijo brezhibno urejeno mizo.</p></div>
+        <div class="service-card reveal"><div class="service-icon" role="img" aria-label="Talno perilo"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 8h15a5 5 0 0 1 0 10H9Z" fill="currentColor" fill-opacity=".1"/><ellipse cx="9" cy="13" rx="3.2" ry="5"/><ellipse cx="9" cy="13" rx="1.2" ry="2" opacity=".45"/><path d="M3 24.5h26" stroke-width="1.3" opacity=".5"/><path d="M14 18v6.5M20 18v6.5" stroke-width="1.2" opacity=".4"/></svg></div><h3>Talno perilo</h3><p>Čiščenje zunanjih in notranjih preprog ter tepihov. Primerno za poslovne in javne prostore.</p></div>
+        
+        <div class="service-card reveal"><div class="service-icon" role="img" aria-label="Prevzem in dostava"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 20.5v-9a2 2 0 0 1 2-2h13v11Z" fill="currentColor" fill-opacity=".08"/><path d="M2.5 20.5v-9a2 2 0 0 1 2-2h13v11H2.5Z"/><path d="M17.5 13h5.6l4.4 5.1v2.4h-10Z" fill="currentColor" fill-opacity=".1"/><path d="M17.5 13h5.6l4.4 5.1v2.4h-10"/><circle cx="9" cy="23" r="2.6"/><circle cx="22.5" cy="23" r="2.6"/><path d="M8.5 20.5h11" stroke-width="1.2" opacity=".4"/></svg></div><h3>Prevzem & dostava</h3><p>Fleksibilni dostavni časi, prilagojeni vašim operativnim potrebam. Mi pridemo k vam.</p></div>
       </div>
     </div>
   </section>
@@ -775,7 +228,7 @@
   <section class="stats-band">
     <div class="container">
       <div class="stats-band-grid">
-        <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="100">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Zadovoljnih partnerjev</div></div>
+        <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="50">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Zadovoljnih partnerjev</div></div>
         <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="24">0</span><span class="stat-suffix">h</span></div><div class="stat-label">Povprečni rok dostave</div></div>
         <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="5">0</span><span class="stat-suffix">+</span></div><div class="stat-label">Sektorjev v pokritosti</div></div>
         <div class="stat-item reveal"><div class="stat-num">SI</div><div class="stat-label">Slovensko podjetje</div></div>
@@ -791,7 +244,7 @@
           <span class="label reveal" style="color:var(--accent)">Naš pristop</span>
           <h2 class="section-title reveal">Vsako stranko<br>obravnavamo<br>kot partnerja.</h2>
           <p class="section-sub reveal">Zavedamo se, da ima vsaka stranka svoje sisteme in potrebe. Vsak kos perila in vsak madež preučimo z ustreznimi postopki in certificiranimi sredstvi.</p>
-          <button class="btn-primary reveal" onclick="navigate('onas')" style="margin-top:28px;">Spoznajte nas →</button>
+          <a href="/o-nas/" class="btn-primary reveal" style="margin-top:28px;">Spoznajte nas →</a>
         </div>
         <div class="approach-right">
           <div class="approach-item reveal"><div class="approach-num">01</div><div><h4>Prilagojene rešitve</h4><p>Ne ponujamo generičnih paketov. Skupaj oblikujemo rešitev, ki ustreza vašim procesom.</p></div></div>
@@ -809,9 +262,9 @@
       <span class="label reveal">Kaj pravijo stranke</span>
       <h2 class="section-title reveal">Zaupanje, zgrajeno<br>s kakovostjo.</h2>
       <div class="testimonials-grid">
-        <div class="testi-card reveal"><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-quote">"</div><p class="testi-text">SmartClean skrbi za vso posteljnino in brisače naše hotelske hiše. Vedno točno, vedno brezhibno. Sodelovanje je izredno učinkovito.</p><div class="testi-sector" style="background:var(--blue-m);color:var(--blue);">🏨 Hotel &amp; turizem</div></div>
-        <div class="testi-card reveal"><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-quote">"</div><p class="testi-text">Namizno perilo pride vedno čisto in lepo zloženo. Za restavracijo je to ključno – gostje opazijo razliko. Priporočamo SmartClean vsem v gostinstvu.</p><div class="testi-sector" style="background:var(--gold-m);color:var(--gold);">🍽️ Gostinstvo &amp; F&amp;B</div></div>
-        <div class="testi-card reveal"><div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="testi-quote">"</div><p class="testi-text">Kot industrijsko podjetje smo zelo zadovoljni z zanesljivostjo storitve. Termini se spoštujejo, kakovost pranja pa presega pričakovanja.</p><div class="testi-sector" style="background:var(--coral-m);color:var(--coral);">🏭 Industrija &amp; proizvodnja</div></div>
+        <div class="testi-card reveal"><div class="testi-stars"><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span></div><div class="testi-quote">"</div><p class="testi-text">SmartClean skrbi za vso posteljnino in brisače naše hotelske hiše. Vedno točno, vedno brezhibno. Sodelovanje je izredno učinkovito.</p><div class="testi-sector" style="background:var(--blue-m);color:var(--blue);"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21.5v-6a2.5 2.5 0 0 1 2.5-2.5h21a2.5 2.5 0 0 1 2.5 2.5v6Z" fill="currentColor" fill-opacity=".08"/><path d="M3 21.5h26"/><path d="M3 21.5v4M29 21.5v4"/><path d="M6.5 13V9.5a1.5 1.5 0 0 1 1.5-1.5h6a1.5 1.5 0 0 1 1.5 1.5V13" fill="currentColor" fill-opacity=".12"/><path d="M18 13v-1.5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2V13" stroke-width="1.4" opacity=".5"/></svg> Hotel &amp; turizem</div></div>
+        <div class="testi-card reveal"><div class="testi-stars"><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span></div><div class="testi-quote">"</div><p class="testi-text">Namizno perilo pride vedno čisto in lepo zloženo. Za restavracijo je to ključno – gostje opazijo razliko. Priporočamo SmartClean vsem v gostinstvu.</p><div class="testi-sector" style="background:var(--gold-m);color:var(--gold);"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 22.5a11.5 11.5 0 0 1 23 0Z" fill="currentColor" fill-opacity=".08"/><path d="M2 22.5h28"/><path d="M16 11V8"/><circle cx="16" cy="6.5" r="1.6"/><path d="M9 22.5a7 7 0 0 1 7-7" stroke-width="1.2" opacity=".45"/></svg> Gostinstvo &amp; F&amp;B</div></div>
+        <div class="testi-card reveal"><div class="testi-stars"><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span><span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3.6l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.8-4.1-7.8 4.1 1.5-8.7-6.3-6.1 8.7-1.3Z" fill="currentColor" stroke="none"/></svg></span></div><div class="testi-quote">"</div><p class="testi-text">Kot industrijsko podjetje smo zelo zadovoljni z zanesljivostjo storitve. Termini se spoštujejo, kakovost pranja pa presega pričakovanja.</p><div class="testi-sector" style="background:var(--coral-m);color:var(--coral);"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 27.5V15.5l6.5 3.8v-3.8l6.5 3.8V9.5l8 4.8v13.2Z" fill="currentColor" fill-opacity=".08"/><path d="M2 27.5h28"/><path d="M9 23.5v-2.8M16 23.5v-2.8M23 23.5v-2.8"/><path d="M6.5 12.5v-4.5M4.5 10l2-2 2 2" stroke-width="1.4" opacity=".55"/></svg> Industrija &amp; proizvodnja</div></div>
       </div>
     </div>
   </section>
@@ -835,318 +288,27 @@
     <div class="container">
       <div class="contact-strip-inner reveal">
         <div><h2>Pripravljeni začeti?</h2><p>Pišite nam ali pokličite – odgovorimo hitro.</p></div>
-        <button class="btn-white" onclick="navigate('kontakt')">Kontaktirajte nas →</button>
+        <a href="/kontakt/" class="btn-white">Kontaktirajte nas →</a>
       </div>
     </div>
   </section>
-</template>
-
-<!-- O NAS -->
-<template id="page-onas">
-  <section class="page-hero"><div class="page-hero-inner"><span class="label">O podjetju</span><h1>Mladi. Ambiciozni.<br>Zanesljivi.</h1><p>SmartClean je slovensko podjetje, ki je zraslo iz preprostega cilja: ponuditi pralniške storitve, ki resnično delujejo – točno, strokovno in prilagojeno vsaki stranki.</p></div></section>
-  <section class="section onas-story"><div class="container"><div class="onas-story-inner">
-    <div class="reveal"><div class="onas-story-visual"><div class="onas-visual-icon">🧺</div><div class="onas-visual-headline">BSMART d.o.o.</div><p class="onas-visual-text">Slovensko podjetje s sedežem v Slovenskih Konjicah, ki pokriva celotno Slovenijo z zanesljivo dostavo in storitvijo po meri.</p><div class="onas-mini-stats"><div class="onas-mini-stat"><div class="onas-mini-stat-num">100+</div><div class="onas-mini-stat-label">Partnerjev</div></div><div class="onas-mini-stat"><div class="onas-mini-stat-num">SI</div><div class="onas-mini-stat-label">Slovensko podjetje</div></div><div class="onas-mini-stat"><div class="onas-mini-stat-num">5+</div><div class="onas-mini-stat-label">Sektorjev</div></div><div class="onas-mini-stat"><div class="onas-mini-stat-num">24h</div><div class="onas-mini-stat-label">Povpr. rok dostave</div></div></div></div></div>
-    <div class="onas-story-text reveal"><span class="label">Naša zgodba</span><h2 class="section-title">Podjetje, ki raste skupaj s strankami.</h2><p>SmartClean je nastalo z vizijo, da pralniške storitve za podjetja ne smejo biti zapletene, nepredvidljive ali generične. Vsaka stranka je drugačna – drugačni so njeni procesi, njeno perilo, njene zahteve.</p><p>Vsaki stranki posvetimo čas, razumemo njene potrebe in zagotovimo rešitev, ki je res prilagojena. Iščemo dolgoročna partnerstva, ki temeljijo na zaupanju in odprti komunikaciji.</p><p>Naš sedež je v Slovenskih Konjicah, pokrivamo pa celotno Slovenijo z lastno logistiko in zanesljivimi roki. Ponosni smo na ekipo, ki dela z zavzetostjo in skrbnostjo pri vsakem kosu perila.</p><button class="btn-outline-dark" onclick="navigate('kontakt')" style="margin-top:12px;">Stopite v stik →</button></div>
-  </div></div></section>
-  <section class="section onas-values"><div class="container"><span class="label reveal" style="display:block;text-align:center;">Naše vrednote</span><h2 class="section-title reveal" style="text-align:center;">Kar nas vodi vsak dan.</h2><div class="onas-values-grid"><div class="onas-val-card reveal"><div class="onas-val-icon">🎯</div><h3>Natančnost</h3><p>Dogovorjeni roki so sveti. Vsak prevzem in vsaka dostava se izvedeta točno po dogovoru – brez zamud, brez presenečenj.</p></div><div class="onas-val-card reveal"><div class="onas-val-icon">🤝</div><h3>Partnerstvo</h3><p>Ne iščemo zgolj strank – iščemo partnerje. Vsak odnos je za nas dolgoročen in temelji na zaupanju in odprti komunikaciji.</p></div><div class="onas-val-card reveal"><div class="onas-val-icon">✨</div><h3>Kakovost</h3><p>Vsak kos perila obdelamo skrbno in strokovno. Kakovost ni kompromis – je standard, ki ga vzdržujemo pri vsaki naročilnici.</p></div></div></div></section>
-  <section class="section onas-certs"><div class="container"><div class="onas-certs-inner"><div class="onas-certs-left reveal"><span class="label" style="color:var(--accent)">Dokumentacija & standardi</span><h2 class="section-title">Uredimo vso dokumentacijo za vas.</h2><p class="section-sub">Pomagamo strankam pri pridobitvi in ohranjanju dokumentacije, ki jo zahtevajo njihovi standardi kakovosti ali regulatorne zahteve.</p><button class="btn-primary" onclick="navigate('kontakt')" style="margin-top:24px;">Vprašajte nas →</button></div><div class="cert-grid reveal"><div class="cert-item"><div class="cert-icon">📋</div><div><h4>Dokumentacija postopkov</h4><p>Transparentna evidenca pranja za vsako naročilo</p></div></div><div class="cert-item"><div class="cert-icon">🔬</div><div><h4>Ustrezna sredstva</h4><p>Čistila, prilagojena vrsti tekstila in zahtevam sektorja</p></div></div><div class="cert-item"><div class="cert-icon">🏥</div><div><h4>Zdravstveni sektor</h4><p>Posebni postopki za bolnišnično in medicinsko perilo</p></div></div><div class="cert-item"><div class="cert-icon">🏭</div><div><h4>Industrijski standardi</h4><p>Skladnost z zahtevami za delovna oblačila in zaščitna sredstva</p></div></div></div></div></div></section>
-  <section class="contact-strip"><div class="container"><div class="contact-strip-inner reveal"><div><h2>Postanite naš partner.</h2><p>Skupaj poiščemo pravo rešitev za vaše podjetje.</p></div><button class="btn-white" onclick="navigate('kontakt')">Kontaktirajte nas →</button></div></div></section>
-</template>
-
-<!-- PANOGE -->
-<template id="page-panoge">
-  <section class="page-hero"><div class="page-hero-inner"><span class="label">Sektorji</span><h1>Pokrivamo vaš<br>sektor. Brez izjem.</h1><p>Od hotelov in restavracij do farmacevtskih čistih prostorov – SmartClean ima strokovno znanje in izkušnje za vsako panogo.</p></div></section>
-  <section class="section panoge-intro" style="padding-bottom:0;"><div class="container"><div class="panoge-intro-inner"><div class="reveal"><span class="label">Zakaj panožna specializacija?</span><h2 class="section-title">Vsak sektor ima svoje zahteve.</h2></div><div class="reveal"><p>Pranje delovnih oblačil za industrijo je povsem drugačno od pranja posteljnine za hotel ali sterilnih oblačil za čiste prostore. Vsak sektor ima specifična sredstva, temperature, postopke in zakonske zahteve.</p><p>Pri SmartClean razumemo te razlike in v vsakem dogovoru zagotovimo ustrezne postopke za vaš sektor – brez kompromisov.</p></div></div></div></section>
-  <section class="section panoge-section"><div class="container"><span class="label reveal">Panoge</span><h2 class="section-title reveal">Rešitve za vsako dejavnost.</h2><div class="panoge-grid">
-    <div class="panoga-card reveal"><div class="panoga-header"><div class="panoga-icon">🏨</div><div><h3>Hoteli & turizem</h3><span class="panoga-tag">Gostinstvo</span></div></div><p>Posteljnina, brisače in namizno perilo za hotelske goste. Zagotavljamo brezhiben videz in svežino pri vsakem kosu – ker prvi vtis šteje.</p><ul class="panoga-features"><li>Posteljnina vseh dimenzij</li><li>Kopalniške brisače in kopalni plašči</li><li>Namizno perilo za hotelske restavracije</li><li>Fleksibilni dostavni termini</li></ul></div>
-    <div class="panoga-card reveal"><div class="panoga-header"><div class="panoga-icon">🍽️</div><div><h3>Restavracije & gostinstvo</h3><span class="panoga-tag">F&amp;B</span></div></div><p>Namizni prti, serviete, predpasniki in kuhinjske krpe – vse, kar vaš gost vidi, bo nepogoljšano čisto in lepo zloženo.</p><ul class="panoga-features"><li>Namizno perilo vseh vrst</li><li>Kuhinjski tekstil in predpasniki</li><li>Uniforme za strežno osebje</li><li>Pranje kljub zahtevnim madežem</li></ul></div>
-    <div class="panoga-card reveal"><div class="panoga-header"><div class="panoga-icon">🏭</div><div><h3>Industrija & proizvodnja</h3><span class="panoga-tag">Industrija</span></div></div><p>Delovna oblačila za vse panoge industrijske proizvodnje – od lahke industrije do zahtevnih kemičnih ali mehanskih delovnih okolij.</p><ul class="panoga-features"><li>Zaščitna delovna oblačila</li><li>Kombinezoni in jakne</li><li>Skladnost z industrijskimi standardi</li><li>Individualna označitev oblačil</li></ul></div>
-    <div class="panoga-card reveal"><div class="panoga-header"><div class="panoga-icon">🏥</div><div><h3>Zdravstvo & sociala</h3><span class="panoga-tag">Medicinski sektor</span></div></div><p>Bolnišnično perilo, medicinska oblačila in tekstil za domove za ostarele zahtevajo posebne postopke in stroge higienske standarde.</p><ul class="panoga-features"><li>Bolnišnična posteljnina</li><li>Medicinska oblačila in uniforme</li><li>Visokotemp. pralni postopki</li><li>Dokumentacija za revizije</li></ul></div>
-    <div class="panoga-card reveal"><div class="panoga-header"><div class="panoga-icon">🔬</div><div><h3>Farmacija & mikroelektronika</h3><span class="panoga-tag">Čisti prostori</span></div></div><p>Oblačila za čiste prostore zahtevajo posebne postopke čiščenja, pakiranje in dostavo. Zagotavljamo skladnost z zahtevami vaše čiste cone.</p><ul class="panoga-features"><li>Oblačila za čistilne sobe</li><li>Sterilno pakiranje</li><li>Sledljivost vsakega kosa</li><li>Skladnost z GMP/ISO standardi</li></ul></div>
-    <div class="panoga-card reveal"><div class="panoga-header"><div class="panoga-icon">🧹</div><div><h3>Facility management</h3><span class="panoga-tag">Upravljanje objektov</span></div></div><p>Preproge, talna obloga, čistilne krpe in uniforme za čistilne ekipe – vse pod en dogovor, en kontakt, ena dostava.</p><ul class="panoga-features"><li>Servis preprog in talnih oblog</li><li>Uniforme za čistilno osebje</li><li>Čistilne krpe in mopi</li><li>Redno vzdrževanje po urniku</li></ul></div>
-  </div></div></section>
-  <section class="panoge-cta"><div class="container"><div class="panoge-cta-inner reveal"><h2>Najdete svojo panogo?</h2><p>Pišite nam in skupaj poiščemo pravo rešitev za vaše podjetje. Vsako povpraševanje je brezplačno in brez obveznosti.</p><button class="btn-white" onclick="navigate('kontakt')">Pošlji povpraševanje →</button></div></div></section>
-</template>
-
-<!-- FAQ -->
-<template id="page-faq">
-  <section class="page-hero"><div class="page-hero-inner"><span class="label">Pogosta vprašanja</span><h1>Imate vprašanje?<br>Imamo odgovor.</h1><p>Zbrali smo najpogostejša vprašanja naših strank. Če ne najdete odgovora, nam kar pišite.</p></div></section>
-  <section class="section faq-section"><div class="container"><div class="faq-grid">
-    <div class="reveal">
-      <div class="faq-search-wrap"><span class="faq-search-icon">🔍</span><input type="text" class="faq-search" id="faqSearch" placeholder="Iskanje vprašanj …" oninput="filterFaq()"/></div>
-      <div class="faq-cats"><button class="faq-cat-btn active" data-cat="vse" onclick="setCat(this)">Vse</button><button class="faq-cat-btn" data-cat="storitve" onclick="setCat(this)">Storitve</button><button class="faq-cat-btn" data-cat="dostava" onclick="setCat(this)">Dostava</button><button class="faq-cat-btn" data-cat="sodelovanje" onclick="setCat(this)">Sodelovanje</button><button class="faq-cat-btn" data-cat="cena" onclick="setCat(this)">Cena</button></div>
-      <div class="accordion" id="accordion">
-        <div class="acc-item" data-cat="dostava"><button class="acc-trigger" onclick="toggleAcc(this)">Ali pokrivate celotno Slovenijo?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Da, SmartClean pokriva celotno Slovenijo z lastno dostavo. Za specifično lokacijo nas kontaktirajte na <a href="mailto:info@smartcleanofficial.com">info@smartcleanofficial.com</a>.</div></div></div>
-        <div class="acc-item" data-cat="cena dostava"><button class="acc-trigger" onclick="toggleAcc(this)">Ali je dostava vključena v ceno?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Dostava je v večini primerov zajeta v skupno ceno storitve. Natančne pogoje vam pojasnimo pri pripravi individualne ponudbe.</div></div></div>
-        <div class="acc-item" data-cat="sodelovanje"><button class="acc-trigger" onclick="toggleAcc(this)">Kako poteka začetek sodelovanja?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Začetek je preprost – pošljite nam povpraševanje in se dogovorimo za sestanek. Skupaj pregledamo vaše potrebe in uskladimo pogoje. Celoten uvodni postopek navadno traja manj kot teden.</div></div></div>
-        <div class="acc-item" data-cat="storitve"><button class="acc-trigger" onclick="toggleAcc(this)">Katere vrste tekstila sprejemate?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Sprejemamo delovna oblačila, posteljnino, brisače, namizno perilo, preproge in talne obloge ter tekstil za sterilne prostore.</div></div></div>
-        <div class="acc-item" data-cat="storitve sodelovanje"><button class="acc-trigger" onclick="toggleAcc(this)">Pomagate pri pridobitvi certifikatov?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Absolutno. Strankam pomagamo pri pridobitvi ali ohranitvi dokumentacije glede postopkov pranja. Uredimo vso potrebno evidenco.</div></div></div>
-        <div class="acc-item" data-cat="cena"><button class="acc-trigger" onclick="toggleAcc(this)">Kako deluje cenitev storitve?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Cena je odvisna od vrste perila, obsega in pogostosti. Vsaki stranki pripravimo individualno ponudbo po povpraševanju – brez skritih stroškov.</div></div></div>
-        <div class="acc-item" data-cat="dostava storitve"><button class="acc-trigger" onclick="toggleAcc(this)">Kako hitro dobim perilo nazaj?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Standardni rok je 24–48 ur za večino vrst perila. Za nujne naročile se dogovorimo individualno.</div></div></div>
-        <div class="acc-item" data-cat="sodelovanje"><button class="acc-trigger" onclick="toggleAcc(this)">Kakšna je minimalna količina za začetek?<span class="acc-icon">+</span></button><div class="acc-body"><div class="acc-body-inner">Minimalne količine se razlikujejo glede na vrsto storitve in sektor. Povejte nam vaše potrebe in skupaj poiščemo primerno rešitev.</div></div></div>
-      </div>
-      <p id="noResults" style="display:none;color:var(--mid);font-size:.92rem;padding:20px 0;">Ni zadetkov. Kontaktirajte nas neposredno!</p>
-    </div>
-    <div class="faq-sidebar reveal">
-      <h3>Niste našli odgovora?</h3>
-      <p>Naša ekipa je tu za vas. Pokličite nas ali pišite – z veseljem odgovorimo na vsako vprašanje.</p>
-      <div class="faq-contact-card"><h4>Kontaktirajte nas</h4><p>Odgovorimo v najkrajšem možnem času, navadno isti delovni dan.</p><button class="btn-white" onclick="navigate('kontakt')" style="font-size:.88rem;padding:10px 22px;border:none;cursor:pointer;">Pišite nam →</button></div>
-      <div class="mini-contact-list"><div class="mini-contact-item"><div class="mini-ico">📧</div><div><div class="mini-label">E-pošta</div><div class="mini-val"><a href="mailto:info@smartcleanofficial.com">info@smartcleanofficial.com</a></div></div></div><div class="mini-contact-item"><div class="mini-ico">📞</div><div><div class="mini-label">Telefon</div><div class="mini-val"><a href="tel:+38641209676">+386 41 209 676</a></div></div></div></div>
-    </div>
-  </div></div></section>
-</template>
-
-<!-- ZAPOSLITEV -->
-<template id="page-zaposlitev">
-  <section class="page-hero"><div class="page-hero-inner"><span class="label">Karierne priložnosti</span><h1>Pripravljeni na<br>nove izzive?</h1><p>Pridružite se mladi, ambiciozni ekipi, ki postavlja nove standarde pralnih storitev v Sloveniji.</p></div></section>
-  <section class="section why-join"><div class="container"><span class="label reveal">Zakaj SmartClean</span><h2 class="section-title reveal">Dobro delo v dobrem okolju.</h2><div class="why-grid"><div class="why-card reveal"><div class="why-icon">🌱</div><h3>Rastoče podjetje</h3><p>Mlado podjetje z ambicijami pomeni priložnosti za rast skupaj z organizacijo.</p></div><div class="why-card reveal"><div class="why-icon">📈</div><h3>Razvoj in priložnosti</h3><p>Pomagamo vam pri razvoju kompetenc in napredovanju. Skupaj gradimo karierno pot.</p></div><div class="why-card reveal"><div class="why-icon">🤝</div><h3>Ekipni duh</h3><p>Majhna ekipa, velik vpliv. Vsak glas se sliši in vsak prispevek šteje.</p></div></div></div></section>
-  <section class="section roles-section"><div class="container"><span class="label reveal">Prosta delovna mesta</span><h2 class="section-title reveal">Trenutne priložnosti</h2><div class="roles-grid">
-    <div class="role-card reveal"><div class="role-info"><h3>Voznik / dostavljalec</h3><div class="role-tags"><span class="role-tag">Dostava</span><span class="role-tag">Logistika</span><span class="role-tag type">⏱ Polni delovni čas</span><span class="role-tag type">📍 Slovenija</span></div></div><button class="role-apply" onclick="document.getElementById('prijavnica').scrollIntoView({behavior:'smooth'})">Prijavi se →</button></div>
-    <div class="role-card reveal"><div class="role-info"><h3>Operater pralne linije</h3><div class="role-tags"><span class="role-tag">Pranje</span><span class="role-tag">Kakovost</span><span class="role-tag type">⏱ Polni delovni čas</span><span class="role-tag type">📍 Slov. Konjice</span></div></div><button class="role-apply" onclick="document.getElementById('prijavnica').scrollIntoView({behavior:'smooth'})">Prijavi se →</button></div>
-    <div class="open-call reveal"><h3>Ne vidite pravega mesta?</h3><p>Pošljite nam spontano prijavo. Vedno iščemo motivirane posameznike.</p><button class="btn-primary" onclick="document.getElementById('prijavnica').scrollIntoView({behavior:'smooth'})">Spontana prijava</button></div>
-  </div></div></section>
-  <section class="section apply-section" id="prijavnica"><div class="container"><div class="apply-inner">
-    <div><span class="label reveal">Prijava</span><h2 class="section-title reveal">Pošljite nam<br>svojo prijavo.</h2><p class="section-sub reveal">Preberemo vsako prijavo in se javimo v kratkem.</p><ul class="value-list reveal"><li>Odgovorimo na vsako prijavo</li><li>Diskretna obravnava vaših podatkov</li><li>Hitri razgovorni proces</li><li>Prijazno, sproščeno vzdušje</li></ul></div>
-    <div class="reveal"><form class="sc-form" id="applyForm" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="8b41a065-4ea7-427e-900b-1fb76f7a64ba"/>
-              <input type="hidden" name="subject" value="Nova prijava za zaposlitev – SmartClean"/>
-              <input type="hidden" name="from_name" value="SmartClean – Zaposlitev"/><div class="form-row"><input type="text" placeholder="Ime in priimek *" required/><input type="email" placeholder="E-poštni naslov *" required/></div><input type="tel" placeholder="Telefonska številka"/><select><option value="" disabled selected>Delovno mesto …</option><option>Voznik / dostavljalec</option><option>Operater pralne linije</option><option>Spontana prijava</option><option>Drugo</option></select><textarea placeholder="Kratek opis sebe in motivacije …"></textarea><label class="file-label" id="fileLabel">📎 &nbsp;Priložite življenjepis (PDF, Word)<input type="file" accept=".pdf,.doc,.docx" onchange="updateFileLabel(this)"/></label><button type="submit" class="btn-primary">Pošlji prijavo →</button><p class="form-msg" id="applyMsg">✓ Hvala za prijavo! Javili se bomo kmalu.</p><p class="form-note">Z oddajo soglašate z obdelavo vaših podatkov za namene zaposlitve.</p></form></div>
-  </div></div></section>
-</template>
-
-<!-- KONTAKT -->
-<template id="page-kontakt">
-  <section class="page-hero"><div class="page-hero-inner"><span class="label">Stopite v stik</span><h1>Pišite ali pokličite.<br>Odgovorimo hitro.</h1><p>Naša ekipa je tu za vas. Povejte nam vaše potrebe in skupaj bomo našli najboljšo rešitev.</p></div></section>
-  <section class="section contact-section"><div class="container"><div class="contact-grid">
-    <div class="reveal"><span class="label">Kontaktni podatki</span><div class="info-cards" style="margin-top:18px"><div class="info-card"><div class="info-ico">📧</div><div><h4>E-pošta</h4><a href="mailto:info@smartcleanofficial.com">info@smartcleanofficial.com</a></div></div><div class="info-card"><div class="info-ico">📞</div><div><h4>Telefon</h4><a href="tel:+38641209676">+386 41 209 676</a></div></div><div class="info-card"><div class="info-ico">📍</div><div><h4>Naslov</h4><p>BSMART d.o.o.<br>Škalska Cesta 6<br>3210 Slovenske Konjice</p></div></div></div></div>
-    <div class="contact-form-wrap reveal"><h3>Pošljite nam sporočilo</h3><p>Izpolnite obrazec in odgovorili bomo v 1 delovnem dnevu.</p><div id="form-success">✅ <strong>Hvala za vaše sporočilo!</strong><br>Prejeli smo vašo prijavo in se bomo oglasili čim prej.</div><form class="sc-form" id="contactForm"><input type="hidden" name="access_key" value="8b41a065-4ea7-427e-900b-1fb76f7a64ba"/><input type="hidden" name="subject" value="Novo povpraševanje – SmartClean"/><input type="hidden" name="from_name" value="SmartClean spletna stran"/><div class="form-row"><input type="text" name="ime" placeholder="Ime in priimek *" required/><input type="text" name="podjetje" placeholder="Podjetje"/></div><div class="form-row"><input type="email" name="email" placeholder="E-poštni naslov *" required/><input type="tel" name="telefon" placeholder="Telefonska številka"/></div><select name="tema"><option value="" disabled selected>Tema sporočila …</option><option>Povpraševanje za storitve</option><option>Vprašanje o cenah</option><option>Certifikati in dokumentacija</option><option>Partnerstvo</option><option>Reklamacija</option><option>Drugo</option></select><select name="sektor"><option value="" disabled selected>Vaš sektor (neobvezno) …</option><option>Hotel / turizem</option><option>Restavracija / gostinstvo</option><option>Industrija</option><option>Zdravstvo / farmacija</option><option>Facility management</option><option>Drugo</option></select><textarea name="sporocilo" placeholder="Vaše sporočilo ali povpraševanje … *" required></textarea><button type="submit" class="btn-primary" id="contactSubmitBtn">Pošlji sporočilo →</button></form></div>
-  </div></div></section>
-
-</template>
-
-<!-- ════════════ JAVASCRIPT ════════════ -->
-<script>
-  let currentPage = 'home';
-  let activeCat   = 'vse';
-  let laundryCleanup = null;
-
-  /* ROUTER */
-  function navigate(page, anchor) {
-    currentPage = page;
-    window.scrollTo(0, 0);
-    if (laundryCleanup) { laundryCleanup(); laundryCleanup = null; }
-    renderPage();
-    if (anchor) setTimeout(() => {
-      const el = document.getElementById(anchor);
-      if (el) el.scrollIntoView({ behavior:'smooth' });
-    }, 80);
-    updateNavActive();
-    updateFloatingCta();
-  }
-
-  function renderPage() {
-    const app  = document.getElementById('app');
-    const tpl  = document.getElementById('page-' + currentPage);
-    const foot = document.getElementById('footer-tpl');
-    app.innerHTML = '';
-    app.appendChild(tpl.content.cloneNode(true));
-    app.appendChild(foot.content.cloneNode(true));
-    app.style.animation = 'none';
-    void app.offsetWidth;
-    app.style.animation = '';
-    setupReveal();
-    if (currentPage === 'faq')        setupFaq();
-    if (currentPage === 'zaposlitev') setupZaposlitev();
-    if (currentPage === 'kontakt')    setupKontakt();
-    if (currentPage === 'home')       setupHome();
-  }
-
-  function updateNavActive() {
-    ['onas','panoge','faq','zaposlitev','kontakt'].forEach(id => {
-      const el = document.getElementById('nl-' + id);
-      if (el) el.classList.toggle('active', currentPage === id);
-    });
-  }
-
-  /* FLOATING CTA */
-  function updateFloatingCta() {
-    const cta = document.getElementById('floatingCta');
-    if (!cta) return;
-    cta.classList.toggle('visible', currentPage !== 'kontakt' && window.scrollY > 350);
-  }
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
-    updateFloatingCta();
-  }, { passive:true });
-
-  /* NAV HAMBURGER */
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('hamburger').classList.toggle('open');
-    document.getElementById('mobileMenu').classList.toggle('open');
-  });
-  function closeMenu() {
-    document.getElementById('hamburger').classList.remove('open');
-    document.getElementById('mobileMenu').classList.remove('open');
-  }
-
-  /* REVEAL */
-  function setupReveal() {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 55);
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  }
-
-  /* HOME */
-  function setupHome() {
-    setupCounters();
-    setupLaundryAnim();
-  }
-
-  /* COUNTERS */
-  function setupCounters() {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); obs.unobserve(e.target); } });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.counter').forEach(el => obs.observe(el));
-  }
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const start  = performance.now();
-    const dur    = 1600;
-    const step   = now => {
-      const p    = Math.min((now - start) / dur, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.floor(ease * target);
-      if (p < 1) requestAnimationFrame(step); else el.textContent = target;
-    };
-    requestAnimationFrame(step);
-  }
-
-  /* LAUNDRY SCROLL ANIMATION */
-  function setupLaundryAnim() {
-    const wrap = document.getElementById('laundryWrap');
-    if (!wrap || window.innerWidth <= 860) return;
-
-    let currentPhase = -1;
-
-    function setPhase(phase) {
-      if (phase === currentPhase) return;
-      currentPhase = phase;
-      document.querySelectorAll('.l-scene').forEach((el, i) => el.classList.toggle('active', i === phase));
-      document.querySelectorAll('.l-text').forEach((el,  i) => el.classList.toggle('active', i === phase));
-      const hint = document.getElementById('laundryHint');
-      if (hint) hint.style.opacity = phase === 2 ? '0' : '1';
-    }
-
-    function onScroll() {
-      const rect     = wrap.getBoundingClientRect();
-      const scrolled = -rect.top;
-      const total    = wrap.offsetHeight - window.innerHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / total));
-      setPhase(progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive:true });
-    setPhase(0);
-    onScroll();
-    laundryCleanup = () => window.removeEventListener('scroll', onScroll);
-  }
-
-  /* FAQ */
-  function setupFaq() { activeCat = 'vse'; }
-  function toggleAcc(btn) {
-    const item = btn.closest('.acc-item');
-    const body = item.querySelector('.acc-body');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.acc-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.acc-body').style.maxHeight = '0'; });
-    if (!isOpen) { item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
-  }
-  function setCat(btn) {
-    document.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeCat = btn.dataset.cat;
-    filterFaq();
-  }
-  function filterFaq() {
-    const q = (document.getElementById('faqSearch')?.value || '').toLowerCase();
-    let visible = 0;
-    document.querySelectorAll('.acc-item').forEach(item => {
-      const text = item.querySelector('.acc-trigger').textContent.toLowerCase() + item.querySelector('.acc-body-inner').textContent.toLowerCase();
-      const ok   = (activeCat === 'vse' || item.dataset.cat.includes(activeCat)) && (!q || text.includes(q));
-      item.style.display = ok ? '' : 'none';
-      if (ok) visible++;
-    });
-    const nr = document.getElementById('noResults');
-    if (nr) nr.style.display = visible === 0 ? 'block' : 'none';
-  }
-
-  /* ZAPOSLITEV */
-  function setupZaposlitev() {
-    const form = document.getElementById('applyForm');
-    if (!form) return;
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Pošiljanje …'; btn.disabled = true;
-      try {
-        const res  = await fetch('https://api.web3forms.com/submit', { method:'POST', body: new FormData(form) });
-        const data = await res.json();
-        if (data.success) {
-          const msg = document.getElementById('applyMsg');
-          msg.style.display = 'block';
-          form.reset();
-          document.getElementById('fileLabel').innerHTML = '📎 &nbsp;Priložite življenjepis (PDF, Word)<input type="file" accept=".pdf,.doc,.docx" onchange="updateFileLabel(this)"/>';
-          setTimeout(() => msg.style.display = 'none', 6000);
-        } else {
-          alert('Napaka pri pošiljanju. Pišite nam na info@smartcleanofficial.com');
-        }
-      } catch { alert('Napaka pri pošiljanju. Pišite nam na info@smartcleanofficial.com'); }
-      btn.textContent = 'Pošlji prijavo →'; btn.disabled = false;
-    });
-  }
-  function updateFileLabel(input) {
-    if (input.files[0]) document.getElementById('fileLabel').innerHTML = `✅ &nbsp;${input.files[0].name}<input type="file" accept=".pdf,.doc,.docx" onchange="updateFileLabel(this)" style="display:none"/>`;
-  }
-
-  /* KONTAKT */
-  function setupKontakt() {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = document.getElementById('contactSubmitBtn');
-      btn.textContent = 'Pošiljanje …';
-      btn.disabled = true;
-      try {
-        const res  = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: new FormData(form)
-        });
-        const data = await res.json();
-        if (data.success) {
-          form.style.display = 'none';
-          document.getElementById('form-success').style.display = 'block';
-        } else {
-          alert('Prišlo je do napake. Prosimo pišite nam neposredno na info@smartcleanofficial.com');
-          btn.textContent = 'Pošlji sporočilo →';
-          btn.disabled = false;
-        }
-      } catch {
-        alert('Prišlo je do napake. Prosimo pišite nam neposredno na info@smartcleanofficial.com');
-        btn.textContent = 'Pošlji sporočilo →';
-        btn.disabled = false;
-      }
-    });
-  }
-
-  /* INIT */
-  renderPage();
-</script>
+</main>
+<footer>
+  <strong>SmartClean – BSMART d.o.o.</strong><br>
+  Škalska cesta 6, 3210 Slovenske Konjice &nbsp;|&nbsp;
+  <a href="tel:+38641209676">+386 41 209 676</a> &nbsp;|&nbsp;
+  <a href="mailto:info@smartcleanofficial.com">info@smartcleanofficial.com</a><br>
+  <span style="font-size:.78rem;margin-top:8px;display:block;">
+    © 2026 BSMART d.o.o. Vse pravice pridržane. &nbsp;·&nbsp;
+    <a href="/kontakt/">Kontakt</a> &nbsp;·&nbsp;
+    <a href="/o-nas/">O nas</a> &nbsp;·&nbsp;
+    <a href="/panoge/">Panoge</a> &nbsp;·&nbsp;
+    <a href="/zaposlitev/">Zaposlitev</a>
+  </span>
+</footer>
+<div class="floating-cta" id="floatingCta">
+  <a href="/kontakt/"><span class="float-dot"></span> Povpraševanje</a>
+</div>
+<script src="assets/app.js" defer></script>
 </body>
 </html>
