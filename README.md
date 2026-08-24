@@ -1,18 +1,12 @@
 # SmartClean – smartclean.si
 
-Statična stran, brez build koraka. Vsebino datotek urejaš neposredno,
-commitaš in GitHub Pages postreže.
+Statična stran, brez build koraka. Vsebino urejaš neposredno, commitaš in
+GitHub Pages postreže.
 
-**Predogled lokalno:** dvoklik na `index.html` deluje — CSS in JS se naložita
-prek relativnih poti. Klik na navigacijo lokalno ne bo delal, ker so
-povezave absolutne (`/o-nas/`), kar je pravilno za živo stran.
-Če hočeš lokalno preizkusiti tudi navigacijo, poženi v tej mapi:
-
-```
-python3 -m http.server 8000
-```
-
-in odpri `http://localhost:8000`. Tam se obnaša točno kot v živo.
+**Predogled lokalno:** poženi v tej mapi `python3 -m http.server 8000` in
+odpri `http://localhost:8000`. Dvoklik na `index.html` tudi deluje, samo
+navigacija ne, ker so povezave absolutne (`/o-nas/`) – kar je pravilno za
+živo stran.
 
 ```
 index.html              domača stran            →  /
@@ -22,126 +16,103 @@ faq/index.html          Pogosta vprašanja       →  /faq/
 zaposlitev/index.html   Zaposlitev              →  /zaposlitev/
 kontakt/index.html      Kontakt                 →  /kontakt/
 
-assets/style.css        ves CSS (prej inline)
-assets/app.js           ves JS   (prej inline)
+assets/style.css        ves CSS
+assets/app.js           ves JS
 assets/og.png           slika za predoglede (1200×630)
 
 robots.txt              dovoli indeksiranje, kaže na sitemap
 sitemap.xml             6 URL-jev za Google Search Console
 CNAME                   smartclean.si
-.nojekyll               izklopi Jekyll na GitHub Pages
 ```
 
 Pomembno: mapa `assets/` mora biti commitana. Če stran v živo izgleda kot
-gol besedilni dokument brez oblikovanja, je skoraj zagotovo ta mapa
-manjkala v pushu.
+gol besedilni dokument, je skoraj zagotovo ta mapa manjkala v pushu.
 
 ---
 
-## Kaj se je spremenilo
+## Prenova videza – avgust 2026
 
-### 1. Prijavnica za zaposlitev je delovala v prazno
-Polja v `#applyForm` niso imela `name` atributov, zato je `FormData` pobral
-samo skrita polja – vsaka prijava je prispela kot prazen mail.
-Dodani `name`: `ime`, `email`, `telefon`, `delovno_mesto`, `sporocilo`,
-`attachment`. Preverjeno, da odide vseh šest.
+Videz je v celoti prevzet po **portal.smartclean.si** (eflitte tokeni).
+Struktura strani, besedila in SEO so nespremenjeni; zamenjan je oblikovni
+sloj.
 
-Oba obrazca imata zdaj tudi honeypot polje `botcheck` (web3forms ga
-prepozna in tiho zavrže spam).
+### Kaj se je spremenilo
 
-> **Priponke:** web3forms na brezplačnem planu CV-ja **ne** posreduje.
-> Polje je pripravljeno, deluje pa šele na plačljivem planu.
-> Do takrat je pošteno napisati »CV pošljite na info@…«.
+**Barve.** Prej zelena/zlata/modra/koralna paleta. Zdaj monokromatsko,
+enako kot portal: svetla tema `#ffffff` ozadje / `#0a0a0a` besedilo, temna
+tema `#0a0a0a` ozadje / `#111112` kartice / bela pisava. Gumbi so črni z
+belo pisavo (v temni temi obrnjeno – `--btn-ink`). Barvni poudarki so
+odstranjeni; hierarhijo nosijo tipografija, 1px črte in prazen prostor.
 
-### 2. Ena stran → šest pravih strani
-Prej je bilo vse en URL; podstrani so živele v `<template>` elementih, ki
-se ne renderirajo, zato jih Google sploh ni videl. Zdaj je vsaka stran
-svoja datoteka s statusom 200, svojim `<title>`, opisom in `canonical`.
-Back gumb, deep linki in deljenje povezav zdaj delujejo.
+Edini ostanek barve je logotip: `--wm-green` (`#1a6644` svetla,
+`#6ed3a1` temna), točno tako kot ga uporablja portal.
 
-### 3. Glava strani
-`og:*` in `twitter:*` (predogledi na LinkedInu, WhatsAppu, Slacku niso več
-goli), `canonical`, favicon, `theme-color`, `robots`, in
-`LaundryOrCleaningService` JSON-LD z naslovom, telefonom in območjem
-delovanja.
+**Pisave.** Identičen nabor in identičen Google Fonts URL kot portal:
 
-### 4. Ikone
-Vseh 31 emojijev zamenjanih z linijskimi SVG ikonami v istem slogu kot
-sekcija »Naš proces«. Barve sledijo obstoječi paleti kartic.
-Preverjeno s pregledom Unicode območij, ne z grepom – prvi poskus z grepom
-je tiho odpovedal na znakih iz visoke ravnine (🧺, 📧, 📞, 📍) in jih je
-devet ostalo.
+```
+Instrument Sans  400;500;600;700   – vse besedilo in vsi naslovi
+Playfair Display 700;900           – samo logotip (wordmark)
+Geist Mono       400;500;600       – številke korakov, značke, tabelarne št.
+```
 
-### 5. Besedilo
-»impresivno urejen miz« → »brezhibno urejeno mizo«, »nepogoljšano čisto«
-→ »brezhibno čisto«, »pri vsaki naročilnici« → »pri vsakem naročilu«,
-»talna obloga« → »talne obloge«, »Oblačila za čistilne sobe« → »za čiste
-prostore«, »Visokotemp.« → »Visokotemperaturni«, © 2025 → 2026.
+Prej: Playfair Display za naslove + DM Sans za besedilo. Naslovi so zdaj
+Instrument Sans 700 z negativnim spacingom, kot na portalu.
 
-### 6. Dostopnost
-Navigacija so pravi `<a href>` (prej `onclick` brez `href` – nedosegljivo
-s tipkovnico in za crawlerje). Dodani vidni fokus, »Preskoči na vsebino«,
-`aria-expanded` na hamburgerju, `aria-label` na ikonah in
+**Geometrija.** `--radius:14px` (kartice), `9px` (polja, ikone, burger),
+`100px` (gumbi, značke) – vse prevzeto iz `portal.css`.
+
+**Kartice.** Brez senčnih dvigov (`translateY` + `box-shadow`). Zdaj 1px
+obroba + rahla sprememba ozadja ob hoverju, enako kot vrstice v portalu.
+
+**Ozadje.** Dodana animirana heksagonska mreža (`.sc-hex`) – isti SVG in
+iste keyframe animacije kot na portalu. Vstavi jo `app.js` (`setupHexBg`),
+da ni podvojena v šestih HTML datotekah. Izklopi se ob
 `prefers-reduced-motion`.
 
-### 7. Višina headerja
-Poravnana z eflitte.si: `.nav-inner` je 75px, spodnja meja 1px → skupaj
-76px (prej 68+1=69). Izmerjeno identično na namizju in mobilnem.
-Logotip ostaja SmartClean wordmark, nespremenjen.
-Dodan `scroll-padding-top:92px`, da sidrne povezave (`/#storitve`) ne
-pristanejo pod fiksnim headerjem.
+**Temni pasovi.** Hero proces, števila, pristop, certifikati in noga
+uporabljajo `--band`. V svetli temi je `#0a0a0a`, v temni `#141416` z 1px
+mejo – da pas ostane viden tudi na temnem ozadju.
 
-### 8. Burger gumb
-Prevzet z eflitte.si: krog 46×46 px, obroba 1 px, tri črtice 11×1 px,
-ob odprtju se zložijo v X (11,5×1,75 px). Geometrija je izmerjeno enaka.
+**Glava.** Burger prevzet s portala: 38×38 px, radij 9 px, črtice
+16×1.5 px. Preklopnik teme 34×34 px, radij 9 px – identično portalu.
 
-### 9. Svetla in temna tema
-Preklopnik je v glavi levo od gumba Kontakt – 34×34 px, radij 9 px,
-sonce/luna, enako kot na eflitte.si. Izbira se hrani v `localStorage`
-pod ključem `smartclean-theme`, privzeto svetla.
+**Proces na domači strani.** Barvni prstan (moder/zelen/zlat po korakih) je
+zamenjan z monokromatskim; barve so bile v `app.js`, ne v CSS.
 
-V `<head>` je majhen skript, ki temo nastavi **pred** izrisom, sicer bi
-ob vsakem nalaganju za trenutek blisnila svetla tema.
+**Ikona in theme-color.** Favicon je črn zaobljen kvadrat z „SC“, isti kot
+na portalu. `theme-color` je zdaj dvojen (`#ffffff` / `#0a0a0a` glede na
+sistemsko temo).
 
-Kako je narejeno: nekatere spremenljivke so nosile dva pomena hkrati –
-`--dark` je bila hkrati barva besedila in ozadje temnih pasov, `--white`
-hkrati ozadje kartic in barva pisave na temnih pasovih. Zato so razcepljene:
+### Kaj je ostalo nespremenjeno
 
-```
---ink       barva besedila        (prej --dark)
---surface   ozadje kartic/sekcij  (prej --white)
---green-t   zelena za besedilo    (prej --green)
---brand-rgb kanal za vse rgba obrobe
-```
+Vsa besedila, vseh 6 URL-jev, `<title>`, opisi, canonical, og/twitter meta,
+JSON-LD, sitemap, robots, oba obrazca (web3forms + honeypot), preklopnik
+teme in `localStorage` ključ `smartclean-theme`, dostopnost (skip link,
+vidni fokus, `aria-*`).
 
-Svetla tema ima za nove spremenljivke natanko stare vrednosti, zato je
-vizualno nespremenjena. Temna tema je samo drug nabor vrednosti v
-`:root[data-theme="dark"]` – nobena komponenta zanjo ne ve.
+### Preverjeno
 
-Zelena za polnila (`--green`) v temni temi ni posvetljena, ker mora bela
-pisava na njej ostati berljiva: `#1f7a51` da 5,3:1. Za besedilo in ikone
-skrbi ločena, svetlejša `--green-t` (`#6ed3a1`).
-
-Preverjeno: v obeh temah na vseh šestih straneh ni besedila pod 4,5:1 in
-v temni temi ni nobene svetle ploskve, ki bi ostala neprebarvana.
+- Vseh 6 strani × svetla/temna tema: brez JS napak, brez vodoravnega
+  drsenja, tema se pravilno prebere iz `localStorage`.
+- Mobilno (390×844): vseh 6 strani brez vodoravnega drsenja.
+- CSS: uravnoteženi oklepaji, brez sklicev na odstranjene spremenljivke.
 
 ---
 
-## Potrjeno 22. 7. 2026
+## Pospravljeno
 
-- **Naslov** Škalska cesta 6, Slovenske Konjice — potrjen, ostaja
-- **50+ partnerjev** namesto 100+ (na treh mestih: hero, števec, O nas)
-- **Sterilne sobe in čisti prostori odstranjeni.** Šla je storitvena
-  kartica na domači strani, cela kartica »Farmacija & mikroelektronika«
-  na Panogah skupaj z GMP/ISO, ter omembe v hero seznamu, podnaslovu
-  storitev, uvodu Panog in odgovoru na FAQ. Storitev je zdaj pet,
-  panog pet.
+- `smartclean-site/` je bila starejša kopija cele strani (brez povezave na
+  portal v glavi in nogi). Premaknjena v `_to_delete/`.
+- `_backup_pred_prenovo/` vsebuje 8 datotek, kot so bile pred prenovo.
+- `_to_delete/` in `_backup_pred_prenovo/` **ne commitaj** – ju izbriši
+  oz. dodaj v `.gitignore`.
 
 ## Za urediti
 
 1. **Zdravstvo.** Kartica »Zdravstvo & sociala« obljublja bolnišnično
-   perilo, medicinske uniforme in dokumentacijo za revizije. Ta ostaja —
-   če je ne pokrivaš, jo je treba odstraniti enako kot farmacijo.
-2. **Fotografije.** Stran še vedno nima nobene prave slike pralnice,
-   ekipe ali perila. Za B2B zaupanje je to trenutno največja vrzel.
+   perilo, medicinske uniforme in dokumentacijo za revizije. Če tega ne
+   pokrivaš, jo je treba odstraniti enako kot farmacijo.
+2. **Fotografije.** Stran še vedno nima nobene prave slike pralnice, ekipe
+   ali perila. Za B2B zaupanje je to največja vrzel – nov, čist videz to
+   še bolj izpostavi.
 3. **Google Search Console** – dodaj domeno in oddaj `sitemap.xml`.

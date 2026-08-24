@@ -203,11 +203,12 @@
 
       function setupProc(){
         var STEPS = [
-  {arc:"#4a90cc",bg:"rgba(45,111,163,.25)",border:"rgba(74,144,204,.22)",glow:"rgba(74,144,204,.18)"},
-  {arc:"#a8e6c3",bg:"rgba(26,102,68,.25)",border:"rgba(168,230,195,.22)",glow:"rgba(45,138,94,.15)"},
-  {arc:"#f0c456",bg:"rgba(196,154,42,.22)",border:"rgba(240,196,86,.25)",glow:"rgba(240,196,86,.15)"},
-  {arc:"#c49a2a",bg:"rgba(196,154,42,.2)",border:"rgba(196,154,42,.22)",glow:"rgba(196,154,42,.12)"},
-  {arc:"#a8e6c3",bg:"rgba(26,102,68,.25)",border:"rgba(168,230,195,.22)",glow:"rgba(45,138,94,.15)"},
+  /* monokromatsko, kot portal – vsi koraki isti nabor */
+  {arc:"rgba(255,255,255,.85)",bg:"rgba(255,255,255,.05)",border:"rgba(255,255,255,.16)",glow:"rgba(255,255,255,.05)"},
+  {arc:"rgba(255,255,255,.85)",bg:"rgba(255,255,255,.05)",border:"rgba(255,255,255,.16)",glow:"rgba(255,255,255,.05)"},
+  {arc:"rgba(255,255,255,.85)",bg:"rgba(255,255,255,.05)",border:"rgba(255,255,255,.16)",glow:"rgba(255,255,255,.05)"},
+  {arc:"rgba(255,255,255,.85)",bg:"rgba(255,255,255,.05)",border:"rgba(255,255,255,.16)",glow:"rgba(255,255,255,.05)"},
+  {arc:"rgba(255,255,255,.85)",bg:"rgba(255,255,255,.05)",border:"rgba(255,255,255,.16)",glow:"rgba(255,255,255,.05)"},
 ];
         var N = STEPS.length;
         var cur = 0, raf = null, startTs = null;
@@ -218,7 +219,7 @@
           var d = STEPS[idx];
           var disc = document.getElementById('procDisc');
           var arc  = document.getElementById('procArc');
-          if(disc){disc.style.background=d.bg;disc.style.borderColor=d.border;disc.style.boxShadow='0 0 50px '+d.glow;}
+          if(disc){disc.style.background=d.bg;disc.style.borderColor=d.border;disc.style.boxShadow='0 0 40px '+d.glow;}
           if(arc){arc.style.stroke=d.arc;if(instant)arc.style.strokeDashoffset=circ;}
           for(var i=0;i<N;i++){
             var on=(i===idx);
@@ -260,6 +261,18 @@
         applyStep(0,true);
       }
 
+
+  /* ══ HEKSAGONSKO OZADJE (prevzeto s portal.smartclean.si) ══ */
+  function setupHexBg(){
+    if (document.querySelector('.sc-hex')) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var wrap = document.createElement('div');
+    wrap.innerHTML = '<div class="sc-hex" aria-hidden="true"><svg class="hexsvg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" shape-rendering="geometricPrecision" xmlns="http://www.w3.org/2000/svg" viewBox="-100 -260 1200 900"><path class="hexwave hw0" d="M-69.0 -119.5 L-138.0 0.0 L-276.0 0.0 L-345.0 -119.5 L-276.0 -239.0 L-138.0 -239.0 Z" fill="none" stroke="#7c60eb" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw1" d="M-69.0 119.5 L-138.0 239.0 L-276.0 239.0 L-345.0 119.5 L-276.0 0.0 L-138.0 0.0 Z" fill="none" stroke="#905ce2" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw2" d="M-69.0 358.5 L-138.0 478.0 L-276.0 478.0 L-345.0 358.5 L-276.0 239.0 L-138.0 239.0 Z" fill="none" stroke="#b158cf" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw3" d="M138.0 0.0 L69.0 119.5 L-69.0 119.5 L-138.0 0.0 L-69.0 -119.5 L69.0 -119.5 Z" fill="none" stroke="#895ee5" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw4" d="M138.0 239.0 L69.0 358.5 L-69.0 358.5 L-138.0 239.0 L-69.0 119.5 L69.0 119.5 Z" fill="none" stroke="#ab58d6" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw5" d="M138.0 478.0 L69.0 597.6 L-69.0 597.6 L-138.0 478.0 L-69.0 358.5 L69.0 358.5 Z" fill="none" stroke="#d86472" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw6" d="M345.0 -119.5 L276.0 0.0 L138.0 0.0 L69.0 -119.5 L138.0 -239.0 L276.0 -239.0 Z" fill="none" stroke="#835fe8" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw7" d="M345.0 119.5 L276.0 239.0 L138.0 239.0 L69.0 119.5 L138.0 0.0 L276.0 0.0 Z" fill="none" stroke="#a459d9" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw8" d="M345.0 358.5 L276.0 478.0 L138.0 478.0 L69.0 358.5 L138.0 239.0 L276.0 239.0 Z" fill="none" stroke="#d26281" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw9" d="M552.0 0.0 L483.0 119.5 L345.0 119.5 L276.0 0.0 L345.0 -119.5 L483.0 -119.5 Z" fill="none" stroke="#9d5adc" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw10" d="M552.0 239.0 L483.0 358.5 L345.0 358.5 L276.0 239.0 L345.0 119.5 L483.0 119.5 Z" fill="none" stroke="#cb6091" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw11" d="M552.0 478.0 L483.0 597.6 L345.0 597.6 L276.0 478.0 L345.0 358.5 L483.0 358.5 Z" fill="none" stroke="#e3774a" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw12" d="M759.0 -119.5 L690.0 0.0 L552.0 0.0 L483.0 -119.5 L552.0 -239.0 L690.0 -239.0 Z" fill="none" stroke="#975bdf" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw13" d="M759.0 119.5 L690.0 239.0 L552.0 239.0 L483.0 119.5 L552.0 0.0 L690.0 0.0 Z" fill="none" stroke="#c55ea0" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw14" d="M759.0 358.5 L690.0 478.0 L552.0 478.0 L483.0 358.5 L552.0 239.0 L690.0 239.0 Z" fill="none" stroke="#e3724f" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw15" d="M966.0 0.0 L897.0 119.5 L759.0 119.5 L690.0 0.0 L759.0 -119.5 L897.0 -119.5 Z" fill="none" stroke="#be5cb0" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw16" d="M966.0 239.0 L897.0 358.5 L759.0 358.5 L690.0 239.0 L759.0 119.5 L897.0 119.5 Z" fill="none" stroke="#e26e55" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw17" d="M966.0 478.0 L897.0 597.6 L759.0 597.6 L690.0 478.0 L759.0 358.5 L897.0 358.5 Z" fill="none" stroke="#e5843b" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw18" d="M1173.0 -119.5 L1104.0 0.0 L966.0 0.0 L897.0 -119.5 L966.0 -239.0 L1104.0 -239.0 Z" fill="none" stroke="#b85abf" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw19" d="M1173.0 119.5 L1104.0 239.0 L966.0 239.0 L897.0 119.5 L966.0 0.0 L1104.0 0.0 Z" fill="none" stroke="#e16a5a" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw20" d="M1173.0 358.5 L1104.0 478.0 L966.0 478.0 L897.0 358.5 L966.0 239.0 L1104.0 239.0 Z" fill="none" stroke="#e57f40" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw21" d="M1380.0 0.0 L1311.0 119.5 L1173.0 119.5 L1104.0 0.0 L1173.0 -119.5 L1311.0 -119.5 Z" fill="none" stroke="#df6662" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw22" d="M1380.0 239.0 L1311.0 358.5 L1173.0 358.5 L1104.0 239.0 L1173.0 119.5 L1311.0 119.5 Z" fill="none" stroke="#e47b45" stroke-width="1.25" vector-effect="non-scaling-stroke"/><path class="hexwave hw23" d="M1380.0 478.0 L1311.0 597.6 L1173.0 597.6 L1104.0 478.0 L1173.0 358.5 L1311.0 358.5 Z" fill="none" stroke="#e68836" stroke-width="1.25" vector-effect="non-scaling-stroke"/></svg></div>';
+    var node = wrap.firstElementChild;
+    if (node) document.body.insertBefore(node, document.body.firstChild);
+  }
+  setupHexBg();
+
   /* ══ PREKLOP TEME ══ */
   function setupTheme(){
     var btn = document.getElementById('themeToggle');
@@ -271,7 +284,7 @@
 
     btn.addEventListener('click', function(){
       var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      veil.style.background = next === 'dark' ? '#0c1611' : '#faf7f2';
+      veil.style.background = next === 'dark' ? '#0a0a0a' : '#ffffff';
       veil.style.opacity = '1';
       setTimeout(function(){
         root.classList.add('theme-instant');
