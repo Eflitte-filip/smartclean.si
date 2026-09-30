@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+._*
+
+# lokalno razvojno okolje (ni del objavljene strani)
+.claude/
+
+# urejevalniki
+*.swp
+*~

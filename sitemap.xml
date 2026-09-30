@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://smartclean.si/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://smartclean.si/panoge/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://smartclean.si/kontakt/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://smartclean.si/o-nas/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://smartclean.si/panoge/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://smartclean.si/faq/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://smartclean.si/zaposlitev/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://smartclean.si/kontakt/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smartclean.si/zaposlitev/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://smartclean.si/panoge/hoteli/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smartclean.si/panoge/gostinstvo/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smartclean.si/panoge/industrija/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smartclean.si/panoge/zdravstvo/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smartclean.si/panoge/facility/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
