@@ -335,23 +335,8 @@ main{padding-top:calc(64px + env(safe-area-inset-top))}
   .vrstica-panoge .panoga-odpri{grid-column:3;grid-row:1;align-self:center}
 }
 
-/* ══ KAJ PEREMO: tekstil po panogah (lebdenje nad panogo poudari njen tekstil) ══ */
-.tkanine{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--med);border-top:1px solid var(--crta)}
-.tkanina{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:22px 0;border-bottom:1px solid var(--crta);
-  transition:opacity .45s var(--gib)}
-.tkanina-ime{font-size:var(--h3);font-weight:600;letter-spacing:-.02em;line-height:1.25}
-.tkanina-panoge{display:flex;flex-wrap:wrap;gap:6px}
-.tkanina-panoge{gap:0 .35em;font-size:15px;color:var(--c2)}
-.oznaka-panoge{display:inline-flex;align-items:center;min-height:32px;color:var(--c2);transition:color .25s}
-.oznaka-panoge:not(:last-child)::after{content:","}
-.oznaka-panoge:hover{color:var(--crnilo);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
-.tkanine:has(.oznaka-panoge:is(:hover,:focus-visible)) .tkanina{opacity:.28}
-.tkanine:has([data-p="hoteli"]:is(:hover,:focus-visible)) .tkanina:has([data-p="hoteli"]),
-.tkanine:has([data-p="gostinstvo"]:is(:hover,:focus-visible)) .tkanina:has([data-p="gostinstvo"]),
-.tkanine:has([data-p="industrija"]:is(:hover,:focus-visible)) .tkanina:has([data-p="industrija"]),
-.tkanine:has([data-p="zdravstvo"]:is(:hover,:focus-visible)) .tkanina:has([data-p="zdravstvo"]),
-.tkanine:has([data-p="facility"]:is(:hover,:focus-visible)) .tkanina:has([data-p="facility"]){opacity:1}
-@media (max-width:860px){.tkanine{grid-template-columns:minmax(0,1fr)}}
+/* ══ KAJ PEREMO: en velik stavek ══ */
+.peremo-stavek{max-width:24em;font-size:clamp(28px,3.4vw,54px);font-weight:600;line-height:1.1;letter-spacing:-.036em;text-wrap:pretty}
 
 /* ══ DRUGE PANOGE (podstran): kompaktne ploščice ══ */
 .druge{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--med)}
