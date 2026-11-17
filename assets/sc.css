@@ -540,6 +540,7 @@ main{padding-top:calc(64px + env(safe-area-inset-top))}
 .obrazec-napaka.je{display:block}
 .obrazec-hvala{display:none;padding:clamp(24px,4vw,56px) 0;gap:12px}
 .obrazec-hvala.je{display:grid}
+.obrazec-hvala a{color:var(--crnilo);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 
 /* ══ NOGA ══ */
 .noga{margin-top:var(--sekcija);padding:clamp(56px,6vw,88px) var(--rob) calc(32px + env(safe-area-inset-bottom));border-top:1px solid var(--crta);
