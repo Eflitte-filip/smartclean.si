@@ -307,7 +307,6 @@ main{padding-top:calc(64px + env(safe-area-inset-top))}
 }
 
 /* ══ KAJ PEREMO: en velik stavek ══ */
-.peremo-stavek{max-width:24em;font-size:clamp(28px,3.4vw,54px);font-weight:600;line-height:1.1;letter-spacing:-.036em;text-wrap:pretty}
 
 /* ══ DRUGE PANOGE (podstran): kompaktne ploščice ══ */
 .druge{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--med)}
