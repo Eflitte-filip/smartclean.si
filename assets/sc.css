@@ -74,6 +74,7 @@
 
 /* ── osnova ── */
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}   /* obrazec po oddaji: razred z display ne sme povoziti atributa hidden */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:96px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{margin:0;background:var(--papir);color:var(--crnilo);font:400 17px/1.6 var(--ff);letter-spacing:-.006em;
