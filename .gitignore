@@ -8,3 +8,6 @@
 # urejevalniki
 *.swp
 *~
+
+# platno za oblikovanje — samo lokalno, nikoli ne objavi
+osnutek/
